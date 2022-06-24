@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container, Grid } from '@mui/material';
+import Header from './components/Header';
+import MoviesList from './components/MovieList/MoviesList';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Container maxWidth="lg">
+        <Header />
+        <Grid
+          container
+          spacing={4}
+          sx={{ paddingLeft: '24px' }}
         >
-          Learn React
-        </a>
-      </header>
+          <Grid
+            item
+            xs={3}
+          >
+            <Sidebar />
+          </Grid>
+          <Grid
+            item
+            xs={9}
+          >
+            <MoviesList />
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }
