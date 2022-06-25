@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
 import Filters from './Filters/Filters';
-import PagePagination from './PagePagination';
+import Pagination from './Pagination';
 
 const Sidebar: FC = () => {
   return (
@@ -14,7 +14,7 @@ const Sidebar: FC = () => {
       }}
     >
       <Filters />
-      <PagePagination />
+      <Pagination />
     </Box>
   );
 };
