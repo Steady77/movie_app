@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCurrentPage } from '../../redux/movies/actions';
+import { loadPage } from '../../redux/movies/actions';
 import { useTypedSelector } from '../../redux/store';
 
 const Pagination: FC = () => {
@@ -10,21 +10,19 @@ const Pagination: FC = () => {
 
   const nextPage = () => {
     if (currentPage !== totalPages) {
-      dispatch(setCurrentPage(currentPage + 1));
+      dispatch(loadPage(currentPage + 1));
     }
   };
 
   const prevPage = () => {
     if (currentPage !== 1) {
-      dispatch(setCurrentPage(currentPage - 1));
+      dispatch(loadPage(currentPage - 1));
     }
   };
 
   return (
     <>
-      <Box
-        sx={{ display: 'flex', justifyContent: 'space-between', mt: '20px' }}
-      >
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '20px' }}>
         <Button
           disabled={currentPage === 1 ? true : false}
           onClick={prevPage}

@@ -1,18 +1,16 @@
-import {
-  FormControl,
-  MenuItem,
-  Box,
-  Select,
-  SelectChangeEvent,
-  InputLabel,
-} from '@mui/material';
-import { FC, useState } from 'react';
+import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
+import { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadPage, setSortBy } from '../../../redux/movies/actions';
+import { useTypedSelector } from '../../../redux/store';
 
 const SortSelect: FC = () => {
-  const [popular, setPopular] = useState('');
+  const dispatch = useDispatch();
+  const sortBy = useTypedSelector((state) => state.movies.sortBy);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setPopular(event.target.value as string);
+    dispatch(setSortBy(event.target.value));
+    dispatch(loadPage(1));
   };
   return (
     <Box sx={{ minWidth: 120, mb: '25px' }}>
@@ -22,14 +20,14 @@ const SortSelect: FC = () => {
       >
         <InputLabel>Сортировать по:</InputLabel>
         <Select
-          value={popular}
+          value={sortBy}
           label="Сортировать по:"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Популярные по убыванию</MenuItem>
-          <MenuItem value={20}>Популярные по возрастанию</MenuItem>
-          <MenuItem value={30}>Рейтинг по убыванию</MenuItem>
-          <MenuItem value={40}>Рейтинг по возрастанию</MenuItem>
+          <MenuItem value="popularDesc">Популярные по убыванию</MenuItem>
+          <MenuItem value="popularAsc">Популярные по возрастанию</MenuItem>
+          <MenuItem value="retingDesc">Рейтинг по убыванию</MenuItem>
+          <MenuItem value="retingAsc">Рейтинг по возрастанию</MenuItem>
         </Select>
       </FormControl>
     </Box>

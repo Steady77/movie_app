@@ -1,9 +1,9 @@
 import { MovieData } from '../../types';
 
 export const SET_ITEMS = 'SET_ITEMS';
-export const SET_SORTED_ITEMS = 'SET_SORTED_ITEMS';
-export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const LOAD_PAGE = 'LOAD_PAGE';
 export const SET_YEAR = 'SET_YEAR';
+export const SET_SORT_BY = 'SET_SORT_BY';
 
 export const setItems = (items: MovieData[] | {}) => ({
   type: SET_ITEMS,
@@ -15,7 +15,12 @@ export const setYear = (year: number) => ({
   payload: year,
 });
 
-export const setCurrentPage = (page: number) => ({
-  type: SET_CURRENT_PAGE,
+export const setSortBy = (sortBy: string) => ({
+  type: SET_SORT_BY,
+  payload: sortBy,
+});
+
+export const loadPage = (page: number) => ({
+  type: LOAD_PAGE,
   payload: page,
 });

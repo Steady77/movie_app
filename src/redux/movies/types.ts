@@ -7,4 +7,5 @@ export interface MovieState {
   currentPage: number;
   pageLimit: number;
   totalPages: number;
+  sortBy: string;
 }

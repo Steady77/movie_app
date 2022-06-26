@@ -1,14 +1,7 @@
-import {
-  FormControl,
-  MenuItem,
-  Box,
-  Select,
-  SelectChangeEvent,
-  InputLabel,
-} from '@mui/material';
+import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCurrentPage, setYear } from '../../../redux/movies/actions';
+import { setYear, loadPage } from '../../../redux/movies/actions';
 import { useTypedSelector } from '../../../redux/store';
 
 const YearSelect: FC = () => {
@@ -17,7 +10,7 @@ const YearSelect: FC = () => {
 
   const handleChange = (event: SelectChangeEvent) => {
     dispatch(setYear(Number(event.target.value)));
-    dispatch(setCurrentPage(1));
+    dispatch(loadPage(1));
   };
 
   return (
