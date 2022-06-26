@@ -1,27 +1,12 @@
 import { Box, Button, Typography } from '@mui/material';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { data } from '../../data/movieDataAll';
-import { setItems } from '../../redux/movies/actions';
-import { setCurrentPage, setTotalPage } from '../../redux/pagination/actions';
+import { setCurrentPage } from '../../redux/movies/actions';
 import { useTypedSelector } from '../../redux/store';
-import { getPageCount } from '../../utils/helpers';
 
 const Pagination: FC = () => {
-  const { currentPage, pageLimit, totalPages } = useTypedSelector(
-    (state) => state.pagination,
-  );
+  const { currentPage, totalPages } = useTypedSelector((state) => state.movies);
   const dispatch = useDispatch();
-
-  const lastIndex = currentPage * pageLimit;
-  const firstIndex = lastIndex - pageLimit;
-
-  const sliced = data.slice(firstIndex, lastIndex);
-
-  useEffect(() => {
-    dispatch(setTotalPage(getPageCount(data.length, pageLimit)));
-    dispatch(setItems(sliced));
-  }, [currentPage]);
 
   const nextPage = () => {
     if (currentPage !== totalPages) {

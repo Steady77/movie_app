@@ -28,6 +28,8 @@ const SortSelect: FC = () => {
         >
           <MenuItem value={10}>Популярные по убыванию</MenuItem>
           <MenuItem value={20}>Популярные по возрастанию</MenuItem>
+          <MenuItem value={30}>Рейтинг по убыванию</MenuItem>
+          <MenuItem value={40}>Рейтинг по возрастанию</MenuItem>
         </Select>
       </FormControl>
     </Box>

@@ -1,11 +1,9 @@
-import { pagination } from './pagination/reducer';
 import { combineReducers, createStore } from '@reduxjs/toolkit';
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { movies } from './movies/reducer';
 
 const reducers = combineReducers({
   movies,
-  pagination,
 });
 
 export const store = createStore(

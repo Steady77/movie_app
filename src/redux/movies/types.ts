@@ -1,10 +1,10 @@
 import { MovieData } from '../../types';
 
-export type MovieActionType = {
-  type: string;
-  payload: MovieData[];
-};
-
 export interface MovieState {
   items: MovieData[];
+  sortedItems: MovieData[];
+  year: number;
+  currentPage: number;
+  pageLimit: number;
+  totalPages: number;
 }
