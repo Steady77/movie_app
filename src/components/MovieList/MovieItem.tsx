@@ -12,13 +12,10 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC } from 'react';
+import { MovieData } from '../../types';
 
-const MovieItem: FC = ({
-  poster_path,
-  backdrop_path,
-  vote_average,
-  title,
-}: any) => {
+const MovieItem: FC = (props) => {
+  const { poster_path, backdrop_path, vote_average, title } = props as MovieData;
   const imagePath = poster_path || backdrop_path;
 
   return (
