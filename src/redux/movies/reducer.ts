@@ -1,43 +1,33 @@
-import { DEFAULT_SORT_BY, DEFAULT_YEAR } from './../../utils/consts';
-import { LOAD_PAGE, SET_ITEMS, SET_SORT_BY, SET_YEAR } from './actions';
+import { DEFAULT_PAGE_LIMIT, DEFAULT_SORT_TYPE, DEFAULT_YEAR } from './../../utils/consts';
+import { SET_CURRENT_PAGE, SET_GENRES_ID, SET_ITEMS, SET_SORT_BY, SET_YEAR } from './actions';
 import { MovieState } from './types';
 import { AnyAction } from '@reduxjs/toolkit';
-import { filterByYear, getPageCount, sortBy } from '../../utils/helpers';
+import { filterByYear, sortByType } from '../../utils/helpers';
 
 const initialState: MovieState = {
   items: [],
   sortedItems: [],
   year: DEFAULT_YEAR,
   currentPage: 1,
-  pageLimit: 10,
-  totalPages: 0,
-  sortBy: DEFAULT_SORT_BY,
+  pageLimit: DEFAULT_PAGE_LIMIT,
+  sortType: DEFAULT_SORT_TYPE,
+  genresIds: [],
 };
 
 export const movies = (state = initialState, action: AnyAction) => {
-  switch (action.type) {
-    case LOAD_PAGE:
-      const lastIndex = action.payload * state.pageLimit;
-      const firstIndex = lastIndex - state.pageLimit;
+  const { year, sortType } = state;
 
+  switch (action.type) {
+    case SET_CURRENT_PAGE:
       return {
         ...state,
         currentPage: action.payload,
-        sortedItems: sortBy(filterByYear(state.items, state.year), state.sortBy).slice(
-          firstIndex,
-          lastIndex,
-        ),
-        totalPages: getPageCount(filterByYear(state.items, state.year).length),
       };
     case SET_ITEMS:
       return {
         ...state,
         items: [...action.payload],
-        sortedItems: sortBy(filterByYear([...action.payload], state.year), state.sortBy).slice(
-          0,
-          state.pageLimit,
-        ),
-        totalPages: getPageCount(filterByYear(action.payload, state.year).length),
+        sortedItems: sortByType(filterByYear([...action.payload], year), sortType),
       };
     case SET_YEAR:
       return {
@@ -47,7 +37,12 @@ export const movies = (state = initialState, action: AnyAction) => {
     case SET_SORT_BY:
       return {
         ...state,
-        sortBy: action.payload,
+        sortType: action.payload,
+      };
+    case SET_GENRES_ID:
+      return {
+        ...state,
+        genresIds: action.payload,
       };
     default:
       return state;

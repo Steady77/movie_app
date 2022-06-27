@@ -1,16 +1,16 @@
 import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { loadPage, setSortBy } from '../../../redux/movies/actions';
+import { setCurrentPage, setSortBy } from '../../../redux/movies/actions';
 import { useTypedSelector } from '../../../redux/store';
 
 const SortSelect: FC = () => {
   const dispatch = useDispatch();
-  const sortBy = useTypedSelector((state) => state.movies.sortBy);
+  const sortType = useTypedSelector((state) => state.movies.sortType);
 
   const handleChange = (event: SelectChangeEvent) => {
     dispatch(setSortBy(event.target.value));
-    dispatch(loadPage(1));
+    dispatch(setCurrentPage(1));
   };
   return (
     <Box sx={{ minWidth: 120, mb: '25px' }}>
@@ -20,7 +20,7 @@ const SortSelect: FC = () => {
       >
         <InputLabel>Сортировать по:</InputLabel>
         <Select
-          value={sortBy}
+          value={sortType}
           label="Сортировать по:"
           onChange={handleChange}
         >

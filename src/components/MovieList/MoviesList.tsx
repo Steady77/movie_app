@@ -3,9 +3,10 @@ import { FC } from 'react';
 import MovieItem from './MovieItem';
 import { useTypedSelector } from '../../redux/store';
 import { MovieData } from '../../types';
+import { selectSortedAndPaginatedItems } from '../../redux/movies/selectors';
 
 const MoviesList: FC = () => {
-  const movies = useTypedSelector((state) => state.movies.sortedItems);
+  const movies = useTypedSelector(selectSortedAndPaginatedItems);
 
   return (
     <Grid

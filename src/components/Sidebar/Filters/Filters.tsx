@@ -1,8 +1,8 @@
 import { Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { loadPage, setSortBy, setYear } from '../../../redux/movies/actions';
-import { DEFAULT_SORT_BY, DEFAULT_YEAR } from '../../../utils/consts';
+import { setGenresId, setSortBy, setYear } from '../../../redux/movies/actions';
+import { DEFAULT_SORT_TYPE, DEFAULT_YEAR } from '../../../utils/consts';
 import Genres from './Genres';
 import SortSelect from './SortSelect';
 import YearSelect from './YearSelect';
@@ -12,8 +12,8 @@ const Filters: FC = () => {
 
   const clearFilters = () => {
     dispatch(setYear(DEFAULT_YEAR));
-    dispatch(setSortBy(DEFAULT_SORT_BY));
-    dispatch(loadPage(1));
+    dispatch(setSortBy(DEFAULT_SORT_TYPE));
+    dispatch(setGenresId([]));
   };
 
   return (

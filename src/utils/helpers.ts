@@ -1,5 +1,7 @@
 import { MovieData } from './../types';
-export const getPageCount = (totalItems: number, pageLimit = 10) => {
+import { DEFAULT_PAGE_LIMIT } from './consts';
+
+export const getPageCount = (totalItems: number, pageLimit = DEFAULT_PAGE_LIMIT) => {
   return Math.ceil(totalItems / pageLimit);
 };
 
@@ -7,7 +9,15 @@ export const filterByYear = (array: MovieData[], year: number) => {
   return array.filter((item) => new Date(item.release_date).getFullYear() === year);
 };
 
-export const sortBy = (array: MovieData[], type: string) => {
+export const paginate = (array: MovieData[], start: number, end: number) => {
+  return array.slice(start, end);
+};
+
+export const filterByGenre = (array: MovieData[], genresIds: number[]) => {
+  return array.filter((item) => item.genre_ids.some((elem) => genresIds.includes(elem)));
+};
+
+export const sortByType = (array: MovieData[], type: string) => {
   switch (type) {
     case 'popularDesc':
       return array.sort((a, b) => b.popularity - a.popularity);

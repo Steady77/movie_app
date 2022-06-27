@@ -6,6 +6,6 @@ export interface MovieState {
   year: number;
   currentPage: number;
   pageLimit: number;
-  totalPages: number;
-  sortBy: string;
+  sortType: string;
+  genresIds: number[];
 }

@@ -1,22 +1,24 @@
 import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { loadPage } from '../../redux/movies/actions';
+import { setCurrentPage } from '../../redux/movies/actions';
+import { selectTotalPages } from '../../redux/movies/selectors';
 import { useTypedSelector } from '../../redux/store';
 
 const Pagination: FC = () => {
-  const { currentPage, totalPages } = useTypedSelector((state) => state.movies);
+  const currentPage = useTypedSelector((state) => state.movies.currentPage);
+  const totalPages = useTypedSelector(selectTotalPages);
   const dispatch = useDispatch();
 
   const nextPage = () => {
     if (currentPage !== totalPages) {
-      dispatch(loadPage(currentPage + 1));
+      dispatch(setCurrentPage(currentPage + 1));
     }
   };
 
   const prevPage = () => {
     if (currentPage !== 1) {
-      dispatch(loadPage(currentPage - 1));
+      dispatch(setCurrentPage(currentPage - 1));
     }
   };
 
