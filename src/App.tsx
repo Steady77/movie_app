@@ -1,7 +1,7 @@
 import { Container, Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import MoviesList from './components/MovieList/MoviesList';
 import Sidebar from './components/Sidebar/Sidebar';
 import { setItems } from './redux/movies/actions';

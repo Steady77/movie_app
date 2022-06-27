@@ -1,5 +1,6 @@
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { FC } from 'react';
+import LoginModal from './Login/LoginModal';
 
 const Header: FC = () => {
   return (
@@ -16,17 +17,7 @@ const Header: FC = () => {
           >
             Home
           </Typography>
-          <Button
-            sx={{
-              boxShadow: 'none',
-              textTransform: 'capitalize',
-              fontSize: '18px',
-            }}
-            color="success"
-            variant="contained"
-          >
-            Login
-          </Button>
+          <LoginModal />
         </Toolbar>
       </AppBar>
     </Box>
