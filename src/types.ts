@@ -14,3 +14,7 @@ export interface MovieData {
   vote_average: number;
   vote_count: number;
 }
+
+export interface LoginFormProps {
+  handleClose: () => void;
+}

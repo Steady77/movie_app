@@ -1,5 +1,8 @@
-import { Box, Button, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal, Typography } from '@mui/material';
 import { FC, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAuthData } from '../../../redux/auth/actions';
+import { useTypedSelector } from '../../../redux/store';
 import LoginForm from './LoginForm';
 
 const style = {
@@ -15,24 +18,50 @@ const style = {
 };
 
 const LoginModal: FC = () => {
+  const dispatch = useDispatch();
+  const { isAuth, login } = useTypedSelector((state) => state.auth);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <Button
-        sx={{
-          boxShadow: 'none',
-          textTransform: 'capitalize',
-          fontSize: '18px',
-        }}
-        color="success"
-        variant="contained"
-        onClick={handleOpen}
-      >
-        Войти
-      </Button>
+    <>
+      {isAuth ? (
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography
+            variant="h6"
+            component="span"
+            sx={{ mr: '15px', lineHeight: 2.6 }}
+          >
+            {login}
+          </Typography>
+          <Button
+            sx={{
+              boxShadow: 'none',
+              textTransform: 'capitalize',
+              fontSize: '18px',
+            }}
+            color="success"
+            variant="contained"
+            onClick={() => dispatch(setAuthData(false, null))}
+          >
+            Выйти
+          </Button>
+        </Box>
+      ) : (
+        <Button
+          sx={{
+            boxShadow: 'none',
+            textTransform: 'capitalize',
+            fontSize: '18px',
+          }}
+          color="success"
+          variant="contained"
+          onClick={handleOpen}
+        >
+          Войти
+        </Button>
+      )}
       <Modal
         open={open}
         onClose={handleClose}
@@ -41,7 +70,7 @@ const LoginModal: FC = () => {
           <LoginForm handleClose={handleClose} />
         </Box>
       </Modal>
-    </div>
+    </>
   );
 };
 

@@ -1,17 +1,18 @@
 import { Button, TextField } from '@mui/material';
 import { ChangeEvent, FC, useState } from 'react';
-
-interface LoginFormProps {
-  handleClose: () => void;
-}
+import { useDispatch } from 'react-redux';
+import { setAuthData } from '../../../redux/auth/actions';
+import { LoginFormProps } from '../../../types';
 
 const LoginForm: FC<LoginFormProps> = ({ handleClose }) => {
+  const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (login === 'den' && password === '123') {
+    if (login === 'user' && password === '123') {
+      dispatch(setAuthData(true, login));
       handleClose();
     } else {
       alert('Не верные логин или пароль!');

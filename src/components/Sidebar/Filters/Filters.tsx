@@ -2,13 +2,16 @@ import { Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setGenresId, setSortBy, setYear } from '../../../redux/movies/actions';
+import { useTypedSelector } from '../../../redux/store';
 import { DEFAULT_SORT_TYPE, DEFAULT_YEAR } from '../../../utils/consts';
+import FavoriteSelect from './FavoriteSelect';
 import Genres from './Genres';
 import SortSelect from './SortSelect';
 import YearSelect from './YearSelect';
 
 const Filters: FC = () => {
   const dispatch = useDispatch();
+  const isAuth = useTypedSelector((state) => state.auth.isAuth);
 
   const clearFilters = () => {
     dispatch(setYear(DEFAULT_YEAR));
@@ -42,6 +45,7 @@ const Filters: FC = () => {
       </Button>
       <SortSelect />
       <YearSelect />
+      {isAuth && <FavoriteSelect />}
       <Genres />
     </div>
   );

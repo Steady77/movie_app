@@ -14,7 +14,7 @@ const YearSelect: FC = () => {
   };
 
   return (
-    <Box sx={{ minWidth: 120, mb: '15px' }}>
+    <Box sx={{ minWidth: 120, mb: '25px' }}>
       <FormControl
         fullWidth
         size="small"

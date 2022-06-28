@@ -1,15 +1,16 @@
 import { combineReducers, createStore } from '@reduxjs/toolkit';
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { movies } from './movies/reducer';
+import { auth } from './auth/reducer';
 
 const reducers = combineReducers({
   movies,
+  auth,
 });
 
 export const store = createStore(
   reducers,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
+  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 export type RootState = ReturnType<typeof store.getState>;
