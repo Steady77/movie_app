@@ -1,6 +1,7 @@
 import { Button, TextField } from '@mui/material';
 import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { saveToStorage } from 'utils/helpers';
 import { setAuthData } from '../../../redux/auth/actions';
 import { LoginFormProps } from '../../../types';
 
@@ -12,6 +13,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleClose }) => {
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (login === 'user' && password === '123') {
+      saveToStorage('auth', { isAuth: true, login });
       dispatch(setAuthData(true, login));
       handleClose();
     } else {

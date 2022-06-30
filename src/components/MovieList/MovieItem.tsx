@@ -12,11 +12,27 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC } from 'react';
-import { MovieData } from '../../types';
+import { useDispatch } from 'react-redux';
+import { toggleModal } from 'redux/modal/actions';
+import { MoviItemProps } from 'types';
 
-const MovieItem: FC = (props) => {
-  const { poster_path, backdrop_path, vote_average, title } = props as MovieData;
+const MovieItem: FC<MoviItemProps> = ({
+  poster_path,
+  backdrop_path,
+  vote_average,
+  title,
+  isAuth,
+}) => {
   const imagePath = poster_path || backdrop_path;
+  const dispatch = useDispatch();
+
+  const onClickFavorite = () => {
+    if (!isAuth) dispatch(toggleModal());
+  };
+
+  const onClickWatchLater = () => {
+    if (!isAuth) dispatch(toggleModal());
+  };
 
   return (
     <Grid
@@ -45,10 +61,16 @@ const MovieItem: FC = (props) => {
             subheader={`Рейтинг: ${vote_average}`}
             action={
               <>
-                <IconButton size="small">
+                <IconButton
+                  onClick={onClickFavorite}
+                  size="small"
+                >
                   <StarOutline />
                 </IconButton>
-                <IconButton size="small">
+                <IconButton
+                  onClick={onClickWatchLater}
+                  size="small"
+                >
                   <BookmarkBorder />
                 </IconButton>
               </>

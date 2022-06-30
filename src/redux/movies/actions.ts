@@ -5,6 +5,7 @@ export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_YEAR = 'SET_YEAR';
 export const SET_SORT_BY = 'SET_SORT_BY';
 export const SET_GENRES_ID = 'SET_GENRES_ID';
+export const RESET_FILTERS = 'RESET_FILTERS';
 
 export const setItems = (items: MovieData[] | {}) => ({
   type: SET_ITEMS,
@@ -29,4 +30,8 @@ export const setCurrentPage = (page: number) => ({
 export const setGenresId = (ids: number[]) => ({
   type: SET_GENRES_ID,
   payload: ids,
+});
+
+export const resetFilters = () => ({
+  type: RESET_FILTERS,
 });

@@ -3,10 +3,11 @@ import { FC } from 'react';
 import MovieItem from './MovieItem';
 import { useTypedSelector } from '../../redux/store';
 import { MovieData } from '../../types';
-import { selectSortedAndPaginatedItems } from '../../redux/movies/selectors';
+import { selectSortedAndPaginatedItems } from 'redux/movies/selectors';
 
 const MoviesList: FC = () => {
   const movies = useTypedSelector(selectSortedAndPaginatedItems);
+  const isAuth = useTypedSelector((state) => state.auth.isAuth);
 
   return (
     <Grid
@@ -17,6 +18,7 @@ const MoviesList: FC = () => {
       {movies &&
         movies.map((item: MovieData) => (
           <MovieItem
+            isAuth={isAuth}
             key={item.id}
             {...item}
           />

@@ -18,3 +18,11 @@ export interface MovieData {
 export interface LoginFormProps {
   handleClose: () => void;
 }
+
+export interface MoviItemProps {
+  isAuth: boolean;
+  poster_path: string;
+  backdrop_path: string;
+  vote_average: number;
+  title: string;
+}

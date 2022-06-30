@@ -1,6 +1,8 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
-import { FC, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { toggleModal } from 'redux/modal/actions';
+import { getFromStorage, removeFromStorage } from 'utils/helpers';
 import { setAuthData } from '../../../redux/auth/actions';
 import { useTypedSelector } from '../../../redux/store';
 import LoginForm from './LoginForm';
@@ -20,9 +22,22 @@ const style = {
 const LoginModal: FC = () => {
   const dispatch = useDispatch();
   const { isAuth, login } = useTypedSelector((state) => state.auth);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const { isModalOpen } = useTypedSelector((state) => state.modal);
+
+  useEffect(() => {
+    const data = getFromStorage('auth');
+    if (data) {
+      dispatch(setAuthData(data.isAuth, data.login));
+    }
+  }, []);
+
+  const onClickLogout = () => {
+    removeFromStorage('auth');
+    dispatch(setAuthData(false, null));
+  };
+
+  const handleOpen = () => dispatch(toggleModal());
+  const handleClose = () => dispatch(toggleModal());
 
   return (
     <>
@@ -43,7 +58,7 @@ const LoginModal: FC = () => {
             }}
             color="success"
             variant="contained"
-            onClick={() => dispatch(setAuthData(false, null))}
+            onClick={onClickLogout}
           >
             Выйти
           </Button>
@@ -63,7 +78,7 @@ const LoginModal: FC = () => {
         </Button>
       )}
       <Modal
-        open={open}
+        open={isModalOpen}
         onClose={handleClose}
       >
         <Box sx={style}>

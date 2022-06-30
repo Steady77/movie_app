@@ -1,9 +1,8 @@
 import { Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setGenresId, setSortBy, setYear } from '../../../redux/movies/actions';
+import { resetFilters } from '../../../redux/movies/actions';
 import { useTypedSelector } from '../../../redux/store';
-import { DEFAULT_SORT_TYPE, DEFAULT_YEAR } from '../../../utils/consts';
 import FavoriteSelect from './FavoriteSelect';
 import Genres from './Genres';
 import SortSelect from './SortSelect';
@@ -14,9 +13,7 @@ const Filters: FC = () => {
   const isAuth = useTypedSelector((state) => state.auth.isAuth);
 
   const clearFilters = () => {
-    dispatch(setYear(DEFAULT_YEAR));
-    dispatch(setSortBy(DEFAULT_SORT_TYPE));
-    dispatch(setGenresId([]));
+    dispatch(resetFilters());
   };
 
   return (

@@ -1,5 +1,12 @@
 import { DEFAULT_PAGE_LIMIT, DEFAULT_SORT_TYPE, DEFAULT_YEAR } from './../../utils/consts';
-import { SET_CURRENT_PAGE, SET_GENRES_ID, SET_ITEMS, SET_SORT_BY, SET_YEAR } from './actions';
+import {
+  RESET_FILTERS,
+  SET_CURRENT_PAGE,
+  SET_GENRES_ID,
+  SET_ITEMS,
+  SET_SORT_BY,
+  SET_YEAR,
+} from './actions';
 import { MovieState } from './types';
 import { AnyAction } from '@reduxjs/toolkit';
 import { filterByYear, sortByType } from '../../utils/helpers';
@@ -43,6 +50,14 @@ export const movies = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         genresIds: action.payload,
+      };
+    case RESET_FILTERS:
+      return {
+        ...state,
+        year: DEFAULT_YEAR,
+        pageLimit: DEFAULT_PAGE_LIMIT,
+        sortType: DEFAULT_SORT_TYPE,
+        genresIds: [],
       };
     default:
       return state;

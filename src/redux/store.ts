@@ -2,10 +2,12 @@ import { combineReducers, createStore } from '@reduxjs/toolkit';
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { movies } from './movies/reducer';
 import { auth } from './auth/reducer';
+import { modal } from './modal/reducer';
 
 const reducers = combineReducers({
   movies,
   auth,
+  modal,
 });
 
 export const store = createStore(
