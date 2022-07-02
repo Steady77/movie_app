@@ -1,11 +1,12 @@
-import { Container, Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Header from './components/Header/Header';
-import MoviesList from './components/MovieList/MoviesList';
-import Sidebar from './components/Sidebar/Sidebar';
 import { setItems } from './redux/movies/actions';
 import moviesData from './data/moviesData';
+import { Route, Routes } from 'react-router-dom';
+import Home from 'pages/home/Home';
+import MovieInfoPage from 'pages/movie/MovieInfoPage';
+import Layout from 'pages/Layout';
+import SearchPage from 'pages/search/search-page';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,29 +16,29 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Container maxWidth="lg">
-        <Header />
-        <Grid
-          container
-          spacing={4}
-          sx={{ paddingLeft: '24px' }}
-        >
-          <Grid
-            item
-            xs={3}
-          >
-            <Sidebar />
-          </Grid>
-          <Grid
-            item
-            xs={9}
-          >
-            <MoviesList />
-          </Grid>
-        </Grid>
-      </Container>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={<Layout />}
+      >
+        <Route
+          index
+          element={<Home />}
+        />
+        <Route
+          path="search"
+          element={<SearchPage />}
+        />
+        <Route
+          path="movie/:id"
+          element={<MovieInfoPage />}
+        />
+        <Route
+          path="*"
+          element={<h1>Page not found</h1>}
+        />
+      </Route>
+    </Routes>
   );
 }
 

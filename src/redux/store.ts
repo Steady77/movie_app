@@ -1,3 +1,4 @@
+import { bookmarks } from './bookmarks/reducer';
 import { combineReducers, createStore } from '@reduxjs/toolkit';
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { movies } from './movies/reducer';
@@ -8,6 +9,7 @@ const reducers = combineReducers({
   movies,
   auth,
   modal,
+  bookmarks,
 });
 
 export const store = createStore(

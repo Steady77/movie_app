@@ -1,4 +1,4 @@
-import { BookmarkBorder, StarOutline } from '@mui/icons-material';
+import { BookmarkBorder, BookmarkOutlined, StarOutline, StarOutlined } from '@mui/icons-material';
 import {
   Button,
   Card,
@@ -13,8 +13,11 @@ import {
 import { Box } from '@mui/system';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setToFavorite, setToWatchLater } from 'redux/bookmarks/actions';
 import { toggleModal } from 'redux/modal/actions';
 import { MoviItemProps } from 'types';
+import { saveToStorage, toggleIdInArray } from 'utils/helpers';
 
 const MovieItem: FC<MoviItemProps> = ({
   poster_path,
@@ -22,16 +25,28 @@ const MovieItem: FC<MoviItemProps> = ({
   vote_average,
   title,
   isAuth,
+  id,
+  favoriteList,
+  watchLaterList,
 }) => {
-  const imagePath = poster_path || backdrop_path;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const imagePath = poster_path || backdrop_path;
 
   const onClickFavorite = () => {
     if (!isAuth) dispatch(toggleModal());
+    dispatch(setToFavorite(id));
+    saveToStorage('favorites', toggleIdInArray(favoriteList, id));
   };
 
   const onClickWatchLater = () => {
     if (!isAuth) dispatch(toggleModal());
+    dispatch(setToWatchLater(id));
+    saveToStorage('watchLater', toggleIdInArray(watchLaterList, id));
+  };
+
+  const onClickButton = () => {
+    navigate(`movie/${id}`);
   };
 
   return (
@@ -56,7 +71,14 @@ const MovieItem: FC<MoviItemProps> = ({
           height="100%"
           image={`https://image.tmdb.org/t/p/w500/${imagePath}`}
         />
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            flexBasis: '100%',
+            boxSizing: 'border-box',
+          }}
+        >
           <CardHeader
             subheader={`Рейтинг: ${vote_average}`}
             action={
@@ -65,13 +87,13 @@ const MovieItem: FC<MoviItemProps> = ({
                   onClick={onClickFavorite}
                   size="small"
                 >
-                  <StarOutline />
+                  {favoriteList.includes(id) ? <StarOutlined /> : <StarOutline />}
                 </IconButton>
                 <IconButton
                   onClick={onClickWatchLater}
                   size="small"
                 >
-                  <BookmarkBorder />
+                  {watchLaterList.includes(id) ? <BookmarkOutlined /> : <BookmarkBorder />}
                 </IconButton>
               </>
             }
@@ -86,6 +108,7 @@ const MovieItem: FC<MoviItemProps> = ({
           <Divider />
           <CardActions>
             <Button
+              onClick={onClickButton}
               sx={{
                 textTransform: 'none',
                 fontSize: '16px',

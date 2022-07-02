@@ -9,11 +9,9 @@ import {
 } from './actions';
 import { MovieState } from './types';
 import { AnyAction } from '@reduxjs/toolkit';
-import { filterByYear, sortByType } from '../../utils/helpers';
 
 const initialState: MovieState = {
   items: [],
-  sortedItems: [],
   year: DEFAULT_YEAR,
   currentPage: 1,
   pageLimit: DEFAULT_PAGE_LIMIT,
@@ -22,8 +20,6 @@ const initialState: MovieState = {
 };
 
 export const movies = (state = initialState, action: AnyAction) => {
-  const { year, sortType } = state;
-
   switch (action.type) {
     case SET_CURRENT_PAGE:
       return {
@@ -34,7 +30,6 @@ export const movies = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         items: [...action.payload],
-        sortedItems: sortByType(filterByYear([...action.payload], year), sortType),
       };
     case SET_YEAR:
       return {

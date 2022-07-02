@@ -9,27 +9,48 @@ import { RootState } from '../store';
 
 export const selectSortedAndPaginatedItems = (state: RootState) => {
   const { currentPage, pageLimit, year, sortType, items, genresIds } = state.movies;
+  const { favoriteList, watchLaterList, currentBookmark } = state.bookmarks;
 
-  const lastIndex = currentPage * pageLimit;
-  const firstIndex = lastIndex - pageLimit;
+  let tempItems = [...items];
 
-  const filtred = filterByYear(items, year);
+  if (currentBookmark === 'favorite') {
+    tempItems = items.filter((item) => favoriteList.includes(item.id));
+  }
+
+  if (currentBookmark === 'later') {
+    tempItems = items.filter((item) => watchLaterList.includes(item.id));
+  }
+
+  const filtred = filterByYear(tempItems, year);
   const sorted = sortByType(filtred, sortType);
 
   if (!genresIds.length) {
-    return paginate(sorted, firstIndex, lastIndex);
+    return paginate(sorted, currentPage, pageLimit);
   } else {
     const genres = filterByGenre(sorted, genresIds);
-    return paginate(genres, firstIndex, lastIndex);
+    return paginate(genres, currentPage, pageLimit);
   }
 };
 
 export const selectTotalPages = (state: RootState) => {
   const { items, year, genresIds } = state.movies;
+  const { favoriteList, watchLaterList, currentBookmark } = state.bookmarks;
+
+  let tempItems = [...items];
+
+  if (currentBookmark === 'favorite') {
+    tempItems = items.filter((item) => favoriteList.includes(item.id));
+  }
+
+  if (currentBookmark === 'later') {
+    tempItems = items.filter((item) => watchLaterList.includes(item.id));
+  }
 
   if (!genresIds.length) {
-    return getPageCount(filterByYear(items, year).length);
+    return getPageCount(filterByYear(tempItems, year).length);
   } else {
-    return getPageCount(filterByGenre(filterByYear(items, year), genresIds).length);
+    return getPageCount(filterByGenre(filterByYear(tempItems, year), genresIds).length);
   }
 };
+
+export const selectMovies = (state: RootState) => state.movies.items;

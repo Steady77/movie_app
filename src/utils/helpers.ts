@@ -9,8 +9,10 @@ export const filterByYear = (array: MovieData[], year: number) => {
   return array.filter((item) => new Date(item.release_date).getFullYear() === year);
 };
 
-export const paginate = (array: MovieData[], start: number, end: number) => {
-  return array.slice(start, end);
+export const paginate = (array: MovieData[], currentPage: number, pageLimit: number) => {
+  const lastIndex = currentPage * pageLimit;
+  const firstIndex = lastIndex - pageLimit;
+  return array.slice(firstIndex, lastIndex);
 };
 
 export const filterByGenre = (array: MovieData[], genresIds: number[]) => {
@@ -53,4 +55,12 @@ export const getFromStorage = (key: string) => {
 
 export const removeFromStorage = (key: string) => {
   localStorage.removeItem(key);
+};
+
+export const toggleIdInArray = (array: number[], id: number) => {
+  if (array.includes(id)) {
+    return array.filter((item) => item !== id);
+  } else {
+    return [...array, id];
+  }
 };

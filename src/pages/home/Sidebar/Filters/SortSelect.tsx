@@ -1,8 +1,8 @@
 import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCurrentPage, setSortBy } from '../../../redux/movies/actions';
-import { useTypedSelector } from '../../../redux/store';
+import { setCurrentPage, setSortBy } from '../../../../redux/movies/actions';
+import { useTypedSelector } from '../../../../redux/store';
 
 const SortSelect: FC = () => {
   const dispatch = useDispatch();

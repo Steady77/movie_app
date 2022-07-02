@@ -1,11 +1,11 @@
 import { TOGGLE_MODAL } from './actions';
-import { ModalActionType } from './types';
+import { ModalAction } from './types';
 
 const initialState = {
   isModalOpen: false,
 };
 
-export const modal = (state = initialState, action: ModalActionType) => {
+export const modal = (state = initialState, action: ModalAction) => {
   switch (action.type) {
     case TOGGLE_MODAL:
       return {

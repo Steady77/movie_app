@@ -25,4 +25,11 @@ export interface MoviItemProps {
   backdrop_path: string;
   vote_average: number;
   title: string;
+  id: number;
+  favoriteList: number[];
+  watchLaterList: number[];
+}
+
+export interface InfoTableProps {
+  movieData: MovieData[];
 }

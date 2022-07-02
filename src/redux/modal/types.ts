@@ -1,3 +1,3 @@
-export interface ModalActionType {
+export interface ModalAction {
   type: string;
 }

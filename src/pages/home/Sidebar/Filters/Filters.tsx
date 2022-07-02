@@ -1,9 +1,10 @@
 import { Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { resetFilters } from '../../../redux/movies/actions';
-import { useTypedSelector } from '../../../redux/store';
-import FavoriteSelect from './FavoriteSelect';
+import { setCurrentBookmark } from 'redux/bookmarks/actions';
+import { resetFilters } from '../../../../redux/movies/actions';
+import { useTypedSelector } from '../../../../redux/store';
+import BookmarksSelect from './BookmarksSelect';
 import Genres from './Genres';
 import SortSelect from './SortSelect';
 import YearSelect from './YearSelect';
@@ -14,6 +15,7 @@ const Filters: FC = () => {
 
   const clearFilters = () => {
     dispatch(resetFilters());
+    dispatch(setCurrentBookmark(''));
   };
 
   return (
@@ -42,7 +44,7 @@ const Filters: FC = () => {
       </Button>
       <SortSelect />
       <YearSelect />
-      {isAuth && <FavoriteSelect />}
+      {isAuth && <BookmarksSelect />}
       <Genres />
     </div>
   );

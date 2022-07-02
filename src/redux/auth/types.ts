@@ -1,4 +1,4 @@
-export type AuthDataActionType = {
+export type AuthDataAction = {
   type: string;
   payload: {
     isAuth: boolean;
