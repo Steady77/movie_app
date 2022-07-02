@@ -11,15 +11,13 @@ import {
 import { FC } from 'react';
 import { InfoTableProps } from 'types';
 import { genresData } from 'data/genresData';
+import { getGenresNameById } from 'utils/helpers';
 
 const InfoTable: FC<InfoTableProps> = ({ movieData }) => {
   const { original_language, original_title, popularity, release_date, vote_count, genre_ids } =
     movieData[0];
 
-  const genres = genresData
-    .filter((item) => genre_ids.includes(item.id))
-    .map((item) => item.name)
-    .join(', ');
+  const genres = getGenresNameById(genresData, genre_ids);
 
   return (
     <TableContainer component={Paper}>

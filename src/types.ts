@@ -15,8 +15,22 @@ export interface MovieData {
   vote_count: number;
 }
 
+export interface GenresData {
+  id: number;
+  name: string;
+}
+
 export interface LoginFormProps {
   handleClose: () => void;
+}
+
+export interface MovieCardProps {
+  poster_path: string;
+  backdrop_path: string;
+  title: string;
+  id: number;
+  overview: string;
+  genre_ids: number[];
 }
 
 export interface MoviItemProps {

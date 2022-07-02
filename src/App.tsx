@@ -30,6 +30,10 @@ function App() {
           element={<SearchPage />}
         />
         <Route
+          path="search/:id"
+          element={<MovieInfoPage />}
+        />
+        <Route
           path="movie/:id"
           element={<MovieInfoPage />}
         />

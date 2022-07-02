@@ -1,3 +1,4 @@
+import { search } from './search/reducer';
 import { bookmarks } from './bookmarks/reducer';
 import { combineReducers, createStore } from '@reduxjs/toolkit';
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
@@ -10,6 +11,7 @@ const reducers = combineReducers({
   auth,
   modal,
   bookmarks,
+  search,
 });
 
 export const store = createStore(

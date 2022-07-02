@@ -1,4 +1,4 @@
-import { MovieData } from './../types';
+import { GenresData, MovieData } from './../types';
 import { DEFAULT_PAGE_LIMIT } from './consts';
 
 export const getPageCount = (totalItems: number, pageLimit = DEFAULT_PAGE_LIMIT) => {
@@ -17,6 +17,13 @@ export const paginate = (array: MovieData[], currentPage: number, pageLimit: num
 
 export const filterByGenre = (array: MovieData[], genresIds: number[]) => {
   return array.filter((item) => item.genre_ids.some((elem) => genresIds.includes(elem)));
+};
+
+export const getGenresNameById = (array: GenresData[], genresIds: number[]) => {
+  return array
+    .filter((item) => genresIds.includes(item.id))
+    .map((item) => item.name)
+    .join(', ');
 };
 
 export const sortByType = (array: MovieData[], type: string) => {
