@@ -1,5 +1,4 @@
-import { TOGGLE_MODAL } from './actions';
-import { ModalAction } from './types';
+import { ModalAction, ModalActionType } from './types';
 
 const initialState = {
   isModalOpen: false,
@@ -7,7 +6,7 @@ const initialState = {
 
 export const modal = (state = initialState, action: ModalAction) => {
   switch (action.type) {
-    case TOGGLE_MODAL:
+    case ModalActionType.TOGGLE_MODAL:
       return {
         ...state,
         isModalOpen: !state.isModalOpen,

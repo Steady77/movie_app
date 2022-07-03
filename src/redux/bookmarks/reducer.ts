@@ -1,7 +1,5 @@
-import { AnyAction } from '@reduxjs/toolkit';
 import { getFromStorage, toggleIdInArray } from 'utils/helpers';
-import { SET_CURRENT_BOOKMARK, SET_TO_FAVORITE, SET_TO_WATCH_LATER } from './actions';
-import { BookmarksState } from './types';
+import { BookmarkActions, BookmarksActionType, BookmarksState } from './types';
 
 const initialState: BookmarksState = {
   currentBookmark: '',
@@ -9,19 +7,19 @@ const initialState: BookmarksState = {
   watchLaterList: getFromStorage('watchLater') ?? [],
 };
 
-export const bookmarks = (state = initialState, action: AnyAction) => {
+export const bookmarks = (state = initialState, action: BookmarkActions) => {
   switch (action.type) {
-    case SET_TO_FAVORITE:
+    case BookmarksActionType.SET_TO_FAVORITE:
       return {
         ...state,
         favoriteList: toggleIdInArray(state.favoriteList, action.payload),
       };
-    case SET_TO_WATCH_LATER:
+    case BookmarksActionType.SET_TO_WATCH_LATER:
       return {
         ...state,
         watchLaterList: toggleIdInArray(state.watchLaterList, action.payload),
       };
-    case SET_CURRENT_BOOKMARK:
+    case BookmarksActionType.SET_CURRENT_BOOKMARK:
       return {
         ...state,
         currentBookmark: action.payload,

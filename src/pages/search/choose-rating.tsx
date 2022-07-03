@@ -9,12 +9,12 @@ const ChooseRating: FC = () => {
   const dispatch = useDispatch();
 
   const onClickHigh = () => {
-    dispatch(setCompiledMovies(compiledMovies.filter((item: any) => item.vote_average > 5)));
+    dispatch(setCompiledMovies(compiledMovies.filter((item) => item.vote_average > 5)));
     dispatch(setCurrentQuestion(currentQuestion + 1));
   };
 
   const onClickLow = () => {
-    dispatch(setCompiledMovies(compiledMovies.filter((item: any) => item.vote_average < 5)));
+    dispatch(setCompiledMovies(compiledMovies.filter((item) => item.vote_average < 5)));
     dispatch(setCurrentQuestion(currentQuestion + 1));
   };
 

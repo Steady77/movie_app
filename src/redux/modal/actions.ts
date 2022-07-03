@@ -1,5 +1,5 @@
-export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+import { ModalActionType } from './types';
 
 export const toggleModal = () => ({
-  type: TOGGLE_MODAL,
+  type: ModalActionType.TOGGLE_MODAL,
 });

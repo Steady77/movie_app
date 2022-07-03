@@ -9,17 +9,13 @@ const ChoosePopularity: FC = () => {
   const dispatch = useDispatch();
 
   const onClickPopular = () => {
-    const filtred = compiledMovies.filter(
-      (item: any) => item.popularity > 100 && item.vote_count > 150,
-    );
+    const filtred = compiledMovies.filter((item) => item.popularity > 100 && item.vote_count > 150);
     dispatch(setCompiledMovies(filtred));
     dispatch(setCurrentQuestion(currentQuestion + 1));
   };
 
   const onClickNotPopular = () => {
-    const filtred = compiledMovies.filter(
-      (item: any) => item.popularity < 100 && item.vote_count < 150,
-    );
+    const filtred = compiledMovies.filter((item) => item.popularity < 100 && item.vote_count < 150);
     dispatch(setCompiledMovies(filtred));
     dispatch(setCurrentQuestion(currentQuestion + 1));
   };

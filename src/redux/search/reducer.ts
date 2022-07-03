@@ -1,5 +1,4 @@
-import { SearchState } from './types';
-import { AnyAction } from '@reduxjs/toolkit';
+import { SearchActions, SearchActionType, SearchState } from './types';
 
 const initialState: SearchState = {
   currentQuestion: 0,
@@ -7,19 +6,19 @@ const initialState: SearchState = {
   compiledMovies: [],
 };
 
-export const search = (state = initialState, action: AnyAction) => {
+export const search = (state = initialState, action: SearchActions) => {
   switch (action.type) {
-    case 'SET_CURRENT_QUESTION':
+    case SearchActionType.SET_CURRENT_QUESTION:
       return {
         ...state,
         currentQuestion: action.payload,
       };
-    case 'SET_PAGE_NUM':
+    case SearchActionType.SET_PAGE_NUM:
       return {
         ...state,
         pageNum: action.payload,
       };
-    case 'SET_COMPILED_MOVIES':
+    case SearchActionType.SET_COMPILED_MOVIES:
       return {
         ...state,
         compiledMovies: action.payload,

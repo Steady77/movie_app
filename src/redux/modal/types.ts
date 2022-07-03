@@ -1,3 +1,7 @@
 export interface ModalAction {
-  type: string;
+  type: ModalActionType.TOGGLE_MODAL;
+}
+
+export enum ModalActionType {
+  TOGGLE_MODAL = 'TOGGLE_MODAL',
 }
