@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { selectMovies } from 'redux/movies/selectors';
 import { useTypedSelector } from 'redux/store';
 import { MovieData } from 'types';
-import InfoTable from './InfoTable';
+import InfoTable from './Info-table';
 
-const MovieInfoPage = () => {
+const MovieInfo = () => {
   const { id } = useParams();
   const movies = useTypedSelector(selectMovies);
   const movieData: MovieData[] = movies.filter((item) => item.id === Number(id));
@@ -64,4 +64,4 @@ const MovieInfoPage = () => {
   );
 };
 
-export default MovieInfoPage;
+export default MovieInfo;

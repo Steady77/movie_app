@@ -11,7 +11,7 @@ import {
 import { FC } from 'react';
 import { InfoTableProps } from 'types';
 import { genresData } from 'data/genresData';
-import { getGenresNameById } from 'utils/helpers';
+import { getGenresNameById } from 'utils/helpers/array';
 
 const InfoTable: FC<InfoTableProps> = ({ movieData }) => {
   const { original_language, original_title, popularity, release_date, vote_count, genre_ids } =

@@ -1,10 +1,5 @@
-import {
-  filterByGenre,
-  filterByYear,
-  getPageCount,
-  paginate,
-  sortByType,
-} from '../../utils/helpers';
+import { getPageCount } from 'utils/helpers/math';
+import { filterByGenre, filterByYear, paginate, sortByType } from '../../utils/helpers/array';
 import { RootState } from '../store';
 
 export const selectSortedAndPaginatedItems = (state: RootState) => {

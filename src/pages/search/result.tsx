@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
 import { useTypedSelector } from 'redux/store';
-import { paginate } from 'utils/helpers';
-import MovieCard from './card';
+import { paginate } from 'utils/helpers/array';
+import MovieCard from './movie-card';
 import MovieNotFound from './movie-not-found';
 
 const Result: FC = () => {

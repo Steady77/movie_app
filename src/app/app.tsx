@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setItems } from './redux/movies/actions';
-import moviesData from './data/moviesData';
+import { setItems } from 'redux/movies/actions';
+import moviesData from 'data/moviesData';
 import { Route, Routes } from 'react-router-dom';
-import Home from 'pages/home/Home';
-import MovieInfoPage from 'pages/movie/MovieInfoPage';
-import Layout from 'pages/Layout';
-import SearchPage from 'pages/search/search-page';
+import MovieInfo from 'pages/movie-info/movie-info';
+import Search from 'pages/search/search';
+import Home from 'pages/home/home';
+import Layout from 'pages/layout';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,15 +27,15 @@ function App() {
         />
         <Route
           path="search"
-          element={<SearchPage />}
+          element={<Search />}
         />
         <Route
           path="search/:id"
-          element={<MovieInfoPage />}
+          element={<MovieInfo />}
         />
         <Route
           path="movie/:id"
-          element={<MovieInfoPage />}
+          element={<MovieInfo />}
         />
         <Route
           path="*"

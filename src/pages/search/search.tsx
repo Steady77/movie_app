@@ -8,10 +8,10 @@ import Result from './result';
 
 const questionsPages = [<ChooseGenre />, <ChooseRating />, <ChoosePopularity />, <Result />];
 
-const SearchPage: FC = () => {
+const Search: FC = () => {
   const currentQuestion = useTypedSelector((state) => state.search.currentQuestion);
 
   return <Box sx={{ pt: '50px' }}>{questionsPages[currentQuestion]}</Box>;
 };
 
-export default SearchPage;
+export default Search;

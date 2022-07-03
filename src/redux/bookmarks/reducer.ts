@@ -1,4 +1,5 @@
-import { getFromStorage, toggleIdInArray } from 'utils/helpers';
+import { toggleIdInArray } from 'utils/helpers/array';
+import { getFromStorage } from 'utils/helpers/storage';
 import { BookmarkActions, BookmarksActionType, BookmarksState } from './types';
 
 const initialState: BookmarksState = {

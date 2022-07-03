@@ -1,7 +1,8 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import Filters from './Filters/Filters';
-import Pagination from './Pagination';
+import Filters from './filters/filters';
+
+import Pagination from './pagination';
 
 const Sidebar: FC = () => {
   return (

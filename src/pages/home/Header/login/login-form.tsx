@@ -1,9 +1,9 @@
 import { Button, TextField } from '@mui/material';
 import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { saveToStorage } from 'utils/helpers';
-import { setAuthData } from '../../../../redux/auth/actions';
-import { LoginFormProps } from '../../../../types';
+import { setAuthData } from 'redux/auth/actions';
+import { LoginFormProps } from 'types';
+import { saveToStorage } from 'utils/helpers/storage';
 
 const LoginForm: FC<LoginFormProps> = ({ handleClose }) => {
   const dispatch = useDispatch();

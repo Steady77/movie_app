@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { setCurrentQuestion, setPageNum } from 'redux/search/actions';
-import LoginModal from './Login/LoginModal';
+import LoginModal from './login/login-modal';
 
 const Header: FC = () => {
   const navigate = useNavigate();

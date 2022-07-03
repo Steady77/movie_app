@@ -17,7 +17,8 @@ import { useNavigate } from 'react-router-dom';
 import { setToFavorite, setToWatchLater } from 'redux/bookmarks/actions';
 import { toggleModal } from 'redux/modal/actions';
 import { MoviItemProps } from 'types';
-import { saveToStorage, toggleIdInArray } from 'utils/helpers';
+import { toggleIdInArray } from 'utils/helpers/array';
+import { saveToStorage } from 'utils/helpers/storage';
 
 const MovieItem: FC<MoviItemProps> = ({
   poster_path,

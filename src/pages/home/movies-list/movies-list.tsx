@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import { FC } from 'react';
-import MovieItem from './MovieItem';
-import { useTypedSelector } from '../../../redux/store';
-import { MovieData } from '../../../types';
+import MovieItem from './movie-item';
+import { useTypedSelector } from 'redux/store';
+import { MovieData } from 'types';
 import { selectSortedAndPaginatedItems } from 'redux/movies/selectors';
 
 const MoviesList: FC = () => {

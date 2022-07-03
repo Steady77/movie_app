@@ -1,8 +1,9 @@
 import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCurrentPage, setSortBy } from '../../../../redux/movies/actions';
-import { useTypedSelector } from '../../../../redux/store';
+import { setCurrentPage, setSortBy } from 'redux/movies/actions';
+import { useTypedSelector } from 'redux/store';
+import { SORT_TYPE } from 'utils/consts';
 
 const SortSelect: FC = () => {
   const dispatch = useDispatch();
@@ -24,10 +25,10 @@ const SortSelect: FC = () => {
           label="Сортировать по:"
           onChange={handleChange}
         >
-          <MenuItem value="popularDesc">Популярные по убыванию</MenuItem>
-          <MenuItem value="popularAsc">Популярные по возрастанию</MenuItem>
-          <MenuItem value="retingDesc">Рейтинг по убыванию</MenuItem>
-          <MenuItem value="retingAsc">Рейтинг по возрастанию</MenuItem>
+          <MenuItem value={SORT_TYPE.POPULAR_DESC}>Популярные по убыванию</MenuItem>
+          <MenuItem value={SORT_TYPE.POPULAR_ASC}>Популярные по возрастанию</MenuItem>
+          <MenuItem value={SORT_TYPE.RATING_DESC}>Рейтинг по убыванию</MenuItem>
+          <MenuItem value={SORT_TYPE.RATING_ASC}>Рейтинг по возрастанию</MenuItem>
         </Select>
       </FormControl>
     </Box>

@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
-import MoviesList from 'pages/home/MovieList/MoviesList';
-import Sidebar from 'pages/home/Sidebar/Sidebar';
+import MoviesList from 'pages/home/movies-list/movies-list';
+import Sidebar from 'pages/home/sidebar/sidebar';
 
 const Home = () => {
   return (

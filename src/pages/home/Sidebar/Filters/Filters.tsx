@@ -2,12 +2,13 @@ import { Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentBookmark } from 'redux/bookmarks/actions';
-import { resetFilters } from '../../../../redux/movies/actions';
-import { useTypedSelector } from '../../../../redux/store';
-import BookmarksSelect from './BookmarksSelect';
-import Genres from './Genres';
-import SortSelect from './SortSelect';
-import YearSelect from './YearSelect';
+import { resetFilters } from 'redux/movies/actions';
+import { useTypedSelector } from 'redux/store';
+import BookmarksSelect from './bookmarks-select';
+import Genres from './genres';
+
+import SortSelect from './sort-select';
+import YearSelect from './year-select';
 
 const Filters: FC = () => {
   const dispatch = useDispatch();

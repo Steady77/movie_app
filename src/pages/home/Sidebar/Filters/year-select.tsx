@@ -1,8 +1,8 @@
 import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setYear, setCurrentPage } from '../../../../redux/movies/actions';
-import { useTypedSelector } from '../../../../redux/store';
+import { setYear, setCurrentPage } from 'redux/movies/actions';
+import { useTypedSelector } from 'redux/store';
 
 const YearSelect: FC = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const YearSelect: FC = () => {
       >
         <InputLabel>Год релиза:</InputLabel>
         <Select
-          value={year}
+          value={String(year)}
           label="Год релиза:"
           onChange={handleChange}
         >

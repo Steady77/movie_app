@@ -2,10 +2,10 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/actions';
-import { getFromStorage, removeFromStorage } from 'utils/helpers';
-import { setAuthData } from '../../../../redux/auth/actions';
-import { useTypedSelector } from '../../../../redux/store';
-import LoginForm from './LoginForm';
+import { setAuthData } from 'redux/auth/actions';
+import { useTypedSelector } from 'redux/store';
+import LoginForm from './login-form';
+import { getFromStorage, removeFromStorage } from 'utils/helpers/storage';
 
 const style = {
   position: 'absolute' as 'absolute',

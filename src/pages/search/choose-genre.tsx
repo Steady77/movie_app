@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useTypedSelector } from 'redux/store';
 import { genresData } from 'data/genresData';
-import { filterByGenre } from 'utils/helpers';
+import { filterByGenre } from 'utils/helpers/array';
 import { useDispatch } from 'react-redux';
 import { setCurrentQuestion, setCompiledMovies } from 'redux/search/actions';
 

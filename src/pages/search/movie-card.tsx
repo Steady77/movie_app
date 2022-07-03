@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { genresData } from 'data/genresData';
-import { getGenresNameById } from 'utils/helpers';
+import { getGenresNameById } from 'utils/helpers/array';
 import { setPageNum } from 'redux/search/actions';
 import { useTypedSelector } from 'redux/store';
 import { MovieCardProps } from 'types';
