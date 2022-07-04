@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MoviItemProps } from 'types';
 import FavoriteButton from './favorite-button';
@@ -93,4 +93,4 @@ const MovieItem: FC<MoviItemProps> = ({ poster_path, backdrop_path, vote_average
   );
 };
 
-export default MovieItem;
+export default memo(MovieItem);
