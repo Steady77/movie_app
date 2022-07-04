@@ -1,3 +1,3 @@
 import { RootState } from 'redux/store';
 
-export const selectModal = (state: RootState) => state.modal;
+export const selectIsModalOpen = (state: RootState) => state.modal.isModalOpen;

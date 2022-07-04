@@ -1,13 +1,13 @@
 import { Box, Grid, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import { selectMovies } from 'redux/movies/selectors';
+import { selectMovieItems } from 'redux/movies/selectors';
 import { useTypedSelector } from 'redux/store';
 import { MovieData } from 'types';
 import InfoTable from './Info-table';
 
 const MovieInfo = () => {
   const { id } = useParams();
-  const { items } = useTypedSelector(selectMovies);
+  const items = useTypedSelector(selectMovieItems);
   const movieData: MovieData[] = items.filter((item) => item.id === Number(id));
 
   if (!movieData.length) {

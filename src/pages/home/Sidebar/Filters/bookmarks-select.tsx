@@ -3,13 +3,13 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { selectAuth } from 'redux/auth/selectors';
 import { setCurrentBookmark } from 'redux/bookmarks/actions';
-import { selectBookmarks } from 'redux/bookmarks/selectors';
+import { selectCurrentBookmark } from 'redux/bookmarks/selectors';
 import { useTypedSelector } from 'redux/store';
 import { BOOKMARKS } from 'utils/consts';
 
 const BookmarksSelect: FC = () => {
-  const { currentBookmark } = useTypedSelector(selectBookmarks);
-  const isAuth = useTypedSelector(selectAuth);
+  const currentBookmark = useTypedSelector(selectCurrentBookmark);
+  const { isAuth } = useTypedSelector(selectAuth);
   const dispatch = useDispatch();
 
   const handleChange = (e: SelectChangeEvent) => {

@@ -5,12 +5,12 @@ import { genresData } from 'data/genresData';
 import { filterByGenre } from 'utils/helpers/array';
 import { useDispatch } from 'react-redux';
 import { setCurrentQuestion, setCompiledMovies } from 'redux/search/actions';
-import { selectMovies } from 'redux/movies/selectors';
-import { selectSearch } from 'redux/search/selectors';
+import { selectMovieItems } from 'redux/movies/selectors';
+import { selectCurrentQuestion } from 'redux/search/selectors';
 
 const ChooseGenre: FC = () => {
-  const { items } = useTypedSelector(selectMovies);
-  const { currentQuestion } = useTypedSelector(selectSearch);
+  const items = useTypedSelector(selectMovieItems);
+  const currentQuestion = useTypedSelector(selectCurrentQuestion);
   const dispatch = useDispatch();
 
   const onClickButton = (id: number) => {

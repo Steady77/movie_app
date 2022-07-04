@@ -8,7 +8,7 @@ import { getGenresNameById } from 'utils/helpers/array';
 import { setPageNum } from 'redux/search/actions';
 import { useTypedSelector } from 'redux/store';
 import { MovieCardProps } from 'types';
-import { selectSearch } from 'redux/search/selectors';
+import { selectPageNum } from 'redux/search/selectors';
 
 const MovieCard: FC<MovieCardProps> = ({
   poster_path,
@@ -20,7 +20,7 @@ const MovieCard: FC<MovieCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { pageNum } = useTypedSelector(selectSearch);
+  const pageNum = useTypedSelector(selectPageNum);
   const imagePath = poster_path || backdrop_path;
 
   const onClickSuited = () => {

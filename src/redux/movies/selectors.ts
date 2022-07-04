@@ -11,6 +11,10 @@ import { createSelector } from '@reduxjs/toolkit';
 import { selectBookmarks } from 'redux/bookmarks/selectors';
 
 export const selectMovies = (state: RootState) => state.movies;
+export const selectGenresIds = (state: RootState) => state.movies.genresIds;
+export const selectSortType = (state: RootState) => state.movies.sortType;
+export const selectYear = (state: RootState) => state.movies.year;
+export const selectMovieItems = (state: RootState) => state.movies.items;
 export const selectCurrentPage = (state: RootState) => state.movies.currentPage;
 
 export const selectSortedAndPaginatedMovies = createSelector(

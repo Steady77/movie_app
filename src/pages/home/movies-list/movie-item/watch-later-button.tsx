@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { selectAuth } from 'redux/auth/selectors';
 import { setToWatchLater } from 'redux/bookmarks/actions';
 import { toggleModal } from 'redux/modal/actions';
-import { selectBookmarks } from 'redux/bookmarks/selectors';
+import { selectWatchLaterList } from 'redux/bookmarks/selectors';
 import { useTypedSelector } from 'redux/store';
 import { BookmarkButtonsProps } from 'types';
 import { BOOKMARKS } from 'utils/consts';
@@ -15,7 +15,7 @@ import { saveToStorage } from 'utils/helpers/storage';
 const WatchLaterButton: FC<BookmarkButtonsProps> = ({ id }) => {
   const dispatch = useDispatch();
   const { isAuth } = useTypedSelector(selectAuth);
-  const { watchLaterList } = useTypedSelector(selectBookmarks);
+  const watchLaterList = useTypedSelector(selectWatchLaterList);
 
   const onClickWatchLater = () => {
     if (!isAuth) {

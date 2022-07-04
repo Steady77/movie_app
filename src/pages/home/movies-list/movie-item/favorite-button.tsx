@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { selectAuth } from 'redux/auth/selectors';
 import { setToFavorite } from 'redux/bookmarks/actions';
 import { toggleModal } from 'redux/modal/actions';
-import { selectBookmarks } from 'redux/bookmarks/selectors';
+import { selectFavoriteList } from 'redux/bookmarks/selectors';
 import { useTypedSelector } from 'redux/store';
 import { BookmarkButtonsProps } from 'types';
 import { BOOKMARKS } from 'utils/consts';
@@ -15,7 +15,7 @@ import { saveToStorage } from 'utils/helpers/storage';
 const FavoriteButton: FC<BookmarkButtonsProps> = ({ id }) => {
   const dispatch = useDispatch();
   const { isAuth } = useTypedSelector(selectAuth);
-  const { favoriteList } = useTypedSelector(selectBookmarks);
+  const favoriteList = useTypedSelector(selectFavoriteList);
 
   const onClickFavorite = () => {
     if (!isAuth) {
