@@ -2,12 +2,15 @@ import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from 'redux/movies/actions';
-import { selectCurrentPage, selectTotalPages } from 'redux/movies/selectors';
+import { selectCurrentPage, selectSortedMovies } from 'redux/movies/selectors';
 import { useTypedSelector } from 'redux/store';
+import { getPageCount } from 'utils/helpers/math';
 
 const Pagination: FC = () => {
   const currentPage = useTypedSelector(selectCurrentPage);
-  const totalPages = useTypedSelector(selectTotalPages);
+  const movies = useTypedSelector(selectSortedMovies);
+
+  const totalPages = getPageCount(movies.length);
   const dispatch = useDispatch();
 
   const nextPage = () => {

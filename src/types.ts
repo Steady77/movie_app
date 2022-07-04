@@ -35,6 +35,11 @@ export interface MovieCardProps {
   genre_ids: number[];
 }
 
+export interface GenreCheckboxProps {
+  id: number;
+  name: string;
+}
+
 export interface MoviItemProps {
   poster_path: string;
   backdrop_path: string;

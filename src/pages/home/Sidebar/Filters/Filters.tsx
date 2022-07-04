@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setCurrentBookmark } from 'redux/bookmarks/actions';
 import { resetFilters } from 'redux/movies/actions';
 import BookmarksSelect from './bookmarks-select';
-import Genres from './genres';
+import Genres from './genres/genres';
 
 import SortSelect from './sort-select';
 import YearSelect from './year-select';

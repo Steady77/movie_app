@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { selectAuth } from 'redux/auth/selectors';
 import { setCurrentBookmark } from 'redux/bookmarks/actions';
 import { selectCurrentBookmark } from 'redux/bookmarks/selectors';
+import { setCurrentPage } from 'redux/movies/actions';
 import { useTypedSelector } from 'redux/store';
 import { BOOKMARKS } from 'utils/consts';
 
@@ -14,6 +15,7 @@ const BookmarksSelect: FC = () => {
 
   const handleChange = (e: SelectChangeEvent) => {
     dispatch(setCurrentBookmark(e.target.value));
+    dispatch(setCurrentPage(1));
   };
 
   return (

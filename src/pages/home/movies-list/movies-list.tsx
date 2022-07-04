@@ -3,10 +3,15 @@ import { FC } from 'react';
 import MovieItem from './movie-item/movie-item';
 import { useTypedSelector } from 'redux/store';
 import { MovieData } from 'types';
-import { selectSortedAndPaginatedMovies } from 'redux/movies/selectors';
+import { selectCurrentPage, selectSortedMovies } from 'redux/movies/selectors';
+import { DEFAULT_PAGE_LIMIT } from 'utils/consts';
+import { paginate } from 'utils/helpers/array';
 
 const MoviesList: FC = () => {
-  const movies = useTypedSelector(selectSortedAndPaginatedMovies);
+  const movies = useTypedSelector(selectSortedMovies);
+  const currentPage = useTypedSelector(selectCurrentPage);
+
+  const paginated = paginate(movies, currentPage, DEFAULT_PAGE_LIMIT);
 
   return (
     <Grid
@@ -14,8 +19,8 @@ const MoviesList: FC = () => {
       spacing={3}
       columns={16}
     >
-      {movies &&
-        movies.map((item: MovieData) => (
+      {paginated &&
+        paginated.map((item: MovieData) => (
           <MovieItem
             key={item.id}
             {...item}

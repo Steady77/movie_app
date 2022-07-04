@@ -23,19 +23,17 @@ export const getGenresNameById = (array: GenresData[], genresIds: number[]) => {
 };
 
 export const sortByType = (array: MovieData[], type: string) => {
-  let arrayCopy = [...array];
-
   switch (type) {
     case SORT_TYPE.POPULAR_DESC:
-      return arrayCopy.sort((a, b) => b.popularity - a.popularity);
+      return [...array].sort((a, b) => b.popularity - a.popularity);
     case SORT_TYPE.POPULAR_ASC:
-      return arrayCopy.sort((a, b) => a.popularity - b.popularity);
+      return [...array].sort((a, b) => a.popularity - b.popularity);
     case SORT_TYPE.RATING_DESC:
-      return arrayCopy.sort((a, b) => b.vote_average - a.vote_average);
+      return [...array].sort((a, b) => b.vote_average - a.vote_average);
     case SORT_TYPE.RATING_ASC:
-      return arrayCopy.sort((a, b) => a.vote_average - b.vote_average);
+      return [...array].sort((a, b) => a.vote_average - b.vote_average);
     default:
-      return arrayCopy;
+      return array;
   }
 };
 
