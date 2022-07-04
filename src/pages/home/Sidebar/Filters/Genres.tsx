@@ -5,9 +5,10 @@ import { toggleIdInArray } from 'utils/helpers/array';
 import { genresData } from 'data/genresData';
 import { setCurrentPage, setGenresId } from 'redux/movies/actions';
 import { useTypedSelector } from 'redux/store';
+import { selectMovies } from 'redux/movies/selectors';
 
 const Genres: FC = () => {
-  const genresIds: number[] = useTypedSelector((state) => state.movies.genresIds);
+  const { genresIds } = useTypedSelector(selectMovies);
   const dispatch = useDispatch();
 
   const handleCheckbox = (id: number) => {

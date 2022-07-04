@@ -2,10 +2,11 @@ import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentQuestion, setCompiledMovies } from 'redux/search/actions';
+import { selectSearch } from 'redux/search/selectors';
 import { useTypedSelector } from 'redux/store';
 
 const ChooseRating: FC = () => {
-  const { currentQuestion, compiledMovies } = useTypedSelector((state) => state.search);
+  const { currentQuestion, compiledMovies } = useTypedSelector(selectSearch);
   const dispatch = useDispatch();
 
   const onClickHigh = () => {

@@ -2,11 +2,12 @@ import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } fro
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setYear, setCurrentPage } from 'redux/movies/actions';
+import { selectMovies } from 'redux/movies/selectors';
 import { useTypedSelector } from 'redux/store';
 
 const YearSelect: FC = () => {
   const dispatch = useDispatch();
-  const year = useTypedSelector((state) => state.movies.year);
+  const { year } = useTypedSelector(selectMovies);
 
   const handleChange = (event: SelectChangeEvent) => {
     dispatch(setYear(Number(event.target.value)));

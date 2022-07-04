@@ -6,6 +6,8 @@ import { setAuthData } from 'redux/auth/actions';
 import { useTypedSelector } from 'redux/store';
 import LoginForm from './login-form/login-form';
 import { getFromStorage, removeFromStorage } from 'utils/helpers/storage';
+import { selectAuth } from 'redux/auth/selectors';
+import { selectModal } from 'redux/modal/selectors';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,8 +23,8 @@ const style = {
 
 const LoginModal: FC = () => {
   const dispatch = useDispatch();
-  const { isAuth, login } = useTypedSelector((state) => state.auth);
-  const { isModalOpen } = useTypedSelector((state) => state.modal);
+  const { isAuth, login } = useTypedSelector(selectAuth);
+  const { isModalOpen } = useTypedSelector(selectModal);
 
   useEffect(() => {
     const data = getFromStorage('auth');

@@ -36,14 +36,15 @@ export interface MovieCardProps {
 }
 
 export interface MoviItemProps {
-  isAuth: boolean;
   poster_path: string;
   backdrop_path: string;
   vote_average: number;
   title: string;
   id: number;
-  favoriteList: number[];
-  watchLaterList: number[];
+}
+
+export interface BookmarkButtonsProps {
+  id: number;
 }
 
 export interface InfoTableProps {

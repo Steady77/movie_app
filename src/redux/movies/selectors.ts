@@ -8,9 +8,9 @@ import {
 } from 'utils/helpers/array';
 import { RootState } from '../store';
 import { createSelector } from '@reduxjs/toolkit';
+import { selectBookmarks } from 'redux/bookmarks/selectors';
 
 export const selectMovies = (state: RootState) => state.movies;
-export const selectBookmarks = (state: RootState) => state.bookmarks;
 export const selectCurrentPage = (state: RootState) => state.movies.currentPage;
 
 export const selectSortedAndPaginatedMovies = createSelector(

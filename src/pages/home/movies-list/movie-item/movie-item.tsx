@@ -1,4 +1,3 @@
-import { BookmarkBorder, BookmarkOutlined, StarOutline, StarOutlined } from '@mui/icons-material';
 import {
   Button,
   Card,
@@ -7,51 +6,18 @@ import {
   CardMedia,
   Divider,
   Grid,
-  IconButton,
   Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setToFavorite, setToWatchLater } from 'redux/bookmarks/actions';
-import { toggleModal } from 'redux/modal/actions';
 import { MoviItemProps } from 'types';
-import { BOOKMARKS } from 'utils/consts';
-import { toggleIdInArray } from 'utils/helpers/array';
-import { saveToStorage } from 'utils/helpers/storage';
+import FavoriteButton from './favorite-button';
+import WatchLaterButton from './watch-later-button';
 
-const MovieItem: FC<MoviItemProps> = ({
-  poster_path,
-  backdrop_path,
-  vote_average,
-  title,
-  isAuth,
-  id,
-  favoriteList,
-  watchLaterList,
-}) => {
+const MovieItem: FC<MoviItemProps> = ({ poster_path, backdrop_path, vote_average, title, id }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const imagePath = poster_path || backdrop_path;
-
-  const onClickFavorite = () => {
-    if (!isAuth) {
-      dispatch(toggleModal());
-    } else {
-      dispatch(setToFavorite(id));
-      saveToStorage(BOOKMARKS.FAVORITES, toggleIdInArray(favoriteList, id));
-    }
-  };
-
-  const onClickWatchLater = () => {
-    if (!isAuth) {
-      dispatch(toggleModal());
-    } else {
-      dispatch(setToWatchLater(id));
-      saveToStorage(BOOKMARKS.WATCH_LATER, toggleIdInArray(watchLaterList, id));
-    }
-  };
 
   const onClickButton = () => {
     navigate(`movie/${id}`);
@@ -91,18 +57,8 @@ const MovieItem: FC<MoviItemProps> = ({
             subheader={`Рейтинг: ${vote_average}`}
             action={
               <>
-                <IconButton
-                  onClick={onClickFavorite}
-                  size="small"
-                >
-                  {favoriteList.includes(id) ? <StarOutlined /> : <StarOutline />}
-                </IconButton>
-                <IconButton
-                  onClick={onClickWatchLater}
-                  size="small"
-                >
-                  {watchLaterList.includes(id) ? <BookmarkOutlined /> : <BookmarkBorder />}
-                </IconButton>
+                <FavoriteButton id={id} />
+                <WatchLaterButton id={id} />
               </>
             }
           />

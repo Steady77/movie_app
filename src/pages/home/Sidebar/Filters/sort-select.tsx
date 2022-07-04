@@ -2,12 +2,13 @@ import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } fro
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage, setSortBy } from 'redux/movies/actions';
+import { selectMovies } from 'redux/movies/selectors';
 import { useTypedSelector } from 'redux/store';
 import { SORT_TYPE } from 'utils/consts';
 
 const SortSelect: FC = () => {
   const dispatch = useDispatch();
-  const sortType = useTypedSelector((state) => state.movies.sortType);
+  const { sortType } = useTypedSelector(selectMovies);
 
   const handleChange = (event: SelectChangeEvent) => {
     dispatch(setSortBy(event.target.value));
