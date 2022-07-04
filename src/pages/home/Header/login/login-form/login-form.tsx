@@ -1,9 +1,11 @@
-import { Button, TextField } from '@mui/material';
 import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAuthData } from 'redux/auth/actions';
 import { LoginFormProps } from 'types';
 import { saveToStorage } from 'utils/helpers/storage';
+import LoginButton from './login-button';
+import LoginInput from './login-input';
+import PassInput from './pass-input';
 
 const LoginForm: FC<LoginFormProps> = ({ handleClose }) => {
   const dispatch = useDispatch();
@@ -23,33 +25,15 @@ const LoginForm: FC<LoginFormProps> = ({ handleClose }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
-        required
-        label="Имя"
-        variant="standard"
-        fullWidth
-        margin="dense"
-        value={login}
-        onChange={(e) => setLogin(e.target.value)}
+      <LoginInput
+        setLogin={setLogin}
+        login={login}
       />
-      <TextField
-        required
-        label="Пароль"
-        type="password"
-        autoComplete="current-password"
-        variant="standard"
-        fullWidth
-        margin="dense"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+      <PassInput
+        setPassword={setPassword}
+        password={password}
       />
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{ width: '100%', mt: '30px' }}
-      >
-        Войти
-      </Button>
+      <LoginButton />
     </form>
   );
 };

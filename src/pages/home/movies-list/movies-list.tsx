@@ -3,12 +3,13 @@ import { FC } from 'react';
 import MovieItem from './movie-item';
 import { useTypedSelector } from 'redux/store';
 import { MovieData } from 'types';
-import { selectSortedAndPaginatedItems } from 'redux/movies/selectors';
+import { selectSortedAndPaginatedMovies } from 'redux/movies/selectors';
 
 const MoviesList: FC = () => {
-  const movies = useTypedSelector(selectSortedAndPaginatedItems);
+  const movies = useTypedSelector(selectSortedAndPaginatedMovies);
   const isAuth = useTypedSelector((state) => state.auth.isAuth);
   const { favoriteList, watchLaterList } = useTypedSelector((state) => state.bookmarks);
+  console.log('List render');
 
   return (
     <Grid

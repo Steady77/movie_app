@@ -1,3 +1,5 @@
+import { Dispatch } from 'react';
+
 export interface MovieData {
   adult: boolean;
   backdrop_path: string;
@@ -46,4 +48,14 @@ export interface MoviItemProps {
 
 export interface InfoTableProps {
   movieData: MovieData[];
+}
+
+export interface PassInputProps {
+  password: string;
+  setPassword: Dispatch<React.SetStateAction<string>>;
+}
+
+export interface LoginInputProps {
+  login: string;
+  setLogin: Dispatch<React.SetStateAction<string>>;
 }

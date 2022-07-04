@@ -1,51 +1,50 @@
 import { getPageCount } from 'utils/helpers/math';
-import { filterByGenre, filterByYear, paginate, sortByType } from '../../utils/helpers/array';
+import {
+  filterByBookmark,
+  filterByGenre,
+  filterByYear,
+  paginate,
+  sortByType,
+} from 'utils/helpers/array';
 import { RootState } from '../store';
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectSortedAndPaginatedItems = (state: RootState) => {
-  const { currentPage, pageLimit, year, sortType, items, genresIds } = state.movies;
-  const { favoriteList, watchLaterList, currentBookmark } = state.bookmarks;
+export const selectMovies = (state: RootState) => state.movies;
+export const selectBookmarks = (state: RootState) => state.bookmarks;
+export const selectCurrentPage = (state: RootState) => state.movies.currentPage;
 
-  let tempItems = [...items];
+export const selectSortedAndPaginatedMovies = createSelector(
+  [selectMovies, selectBookmarks],
+  (movies, bookmarks) => {
+    const { currentPage, pageLimit, year, sortType, items, genresIds } = movies;
+    const { favoriteList, watchLaterList, currentBookmark } = bookmarks;
 
-  if (currentBookmark === 'favorite') {
-    tempItems = items.filter((item) => favoriteList.includes(item.id));
-  }
+    const tempItems = filterByBookmark(items, currentBookmark, favoriteList, watchLaterList);
 
-  if (currentBookmark === 'later') {
-    tempItems = items.filter((item) => watchLaterList.includes(item.id));
-  }
+    const filtred = filterByYear(tempItems, year);
+    const sorted = sortByType(filtred, sortType);
 
-  const filtred = filterByYear(tempItems, year);
-  const sorted = sortByType(filtred, sortType);
+    if (!genresIds.length) {
+      return paginate(sorted, currentPage, pageLimit);
+    } else {
+      const genres = filterByGenre(sorted, genresIds);
+      return paginate(genres, currentPage, pageLimit);
+    }
+  },
+);
 
-  if (!genresIds.length) {
-    return paginate(sorted, currentPage, pageLimit);
-  } else {
-    const genres = filterByGenre(sorted, genresIds);
-    return paginate(genres, currentPage, pageLimit);
-  }
-};
+export const selectTotalPages = createSelector(
+  [selectMovies, selectBookmarks],
+  (movies, bookmarks) => {
+    const { items, year, genresIds } = movies;
+    const { favoriteList, watchLaterList, currentBookmark } = bookmarks;
 
-export const selectTotalPages = (state: RootState) => {
-  const { items, year, genresIds } = state.movies;
-  const { favoriteList, watchLaterList, currentBookmark } = state.bookmarks;
+    const tempItems = filterByBookmark(items, currentBookmark, favoriteList, watchLaterList);
 
-  let tempItems = [...items];
-
-  if (currentBookmark === 'favorite') {
-    tempItems = items.filter((item) => favoriteList.includes(item.id));
-  }
-
-  if (currentBookmark === 'later') {
-    tempItems = items.filter((item) => watchLaterList.includes(item.id));
-  }
-
-  if (!genresIds.length) {
-    return getPageCount(filterByYear(tempItems, year).length);
-  } else {
-    return getPageCount(filterByGenre(filterByYear(tempItems, year), genresIds).length);
-  }
-};
-
-export const selectMovies = (state: RootState) => state.movies.items;
+    if (!genresIds.length) {
+      return getPageCount(filterByYear(tempItems, year).length);
+    } else {
+      return getPageCount(filterByGenre(filterByYear(tempItems, year), genresIds).length);
+    }
+  },
+);

@@ -5,6 +5,11 @@ export const SORT_TYPE = {
   RATING_ASC: 'ratingAsc',
 };
 
+export const BOOKMARKS = {
+  FAVORITES: 'favorites',
+  WATCH_LATER: 'watchLater',
+};
+
 export const DEFAULT_YEAR = 2020;
 export const DEFAULT_SORT_TYPE = SORT_TYPE.POPULAR_DESC;
 export const DEFAULT_PAGE_LIMIT = 10;

@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { setToFavorite, setToWatchLater } from 'redux/bookmarks/actions';
 import { toggleModal } from 'redux/modal/actions';
 import { MoviItemProps } from 'types';
+import { BOOKMARKS } from 'utils/consts';
 import { toggleIdInArray } from 'utils/helpers/array';
 import { saveToStorage } from 'utils/helpers/storage';
 
@@ -35,15 +36,21 @@ const MovieItem: FC<MoviItemProps> = ({
   const imagePath = poster_path || backdrop_path;
 
   const onClickFavorite = () => {
-    if (!isAuth) dispatch(toggleModal());
-    dispatch(setToFavorite(id));
-    saveToStorage('favorites', toggleIdInArray(favoriteList, id));
+    if (!isAuth) {
+      dispatch(toggleModal());
+    } else {
+      dispatch(setToFavorite(id));
+      saveToStorage(BOOKMARKS.FAVORITES, toggleIdInArray(favoriteList, id));
+    }
   };
 
   const onClickWatchLater = () => {
-    if (!isAuth) dispatch(toggleModal());
-    dispatch(setToWatchLater(id));
-    saveToStorage('watchLater', toggleIdInArray(watchLaterList, id));
+    if (!isAuth) {
+      dispatch(toggleModal());
+    } else {
+      dispatch(setToWatchLater(id));
+      saveToStorage(BOOKMARKS.WATCH_LATER, toggleIdInArray(watchLaterList, id));
+    }
   };
 
   const onClickButton = () => {

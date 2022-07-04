@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/actions';
 import { setAuthData } from 'redux/auth/actions';
 import { useTypedSelector } from 'redux/store';
-import LoginForm from './login-form';
+import LoginForm from './login-form/login-form';
 import { getFromStorage, removeFromStorage } from 'utils/helpers/storage';
 
 const style = {

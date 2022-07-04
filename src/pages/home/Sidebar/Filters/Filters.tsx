@@ -3,7 +3,6 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentBookmark } from 'redux/bookmarks/actions';
 import { resetFilters } from 'redux/movies/actions';
-import { useTypedSelector } from 'redux/store';
 import BookmarksSelect from './bookmarks-select';
 import Genres from './genres';
 
@@ -12,7 +11,6 @@ import YearSelect from './year-select';
 
 const Filters: FC = () => {
   const dispatch = useDispatch();
-  const isAuth = useTypedSelector((state) => state.auth.isAuth);
 
   const clearFilters = () => {
     dispatch(resetFilters());
@@ -45,7 +43,7 @@ const Filters: FC = () => {
       </Button>
       <SortSelect />
       <YearSelect />
-      {isAuth && <BookmarksSelect />}
+      <BookmarksSelect />
       <Genres />
     </div>
   );

@@ -7,8 +7,8 @@ import InfoTable from './Info-table';
 
 const MovieInfo = () => {
   const { id } = useParams();
-  const movies = useTypedSelector(selectMovies);
-  const movieData: MovieData[] = movies.filter((item) => item.id === Number(id));
+  const { items } = useTypedSelector(selectMovies);
+  const movieData: MovieData[] = items.filter((item) => item.id === Number(id));
 
   if (!movieData.length) {
     return <div>Loading...</div>;

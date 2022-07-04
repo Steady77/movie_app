@@ -1,11 +1,12 @@
+import { BOOKMARKS } from 'utils/consts';
 import { toggleIdInArray } from 'utils/helpers/array';
 import { getFromStorage } from 'utils/helpers/storage';
 import { BookmarkActions, BookmarksActionType, BookmarksState } from './types';
 
 const initialState: BookmarksState = {
   currentBookmark: '',
-  favoriteList: getFromStorage('favorites') ?? [],
-  watchLaterList: getFromStorage('watchLater') ?? [],
+  favoriteList: getFromStorage(BOOKMARKS.FAVORITES) ?? [],
+  watchLaterList: getFromStorage(BOOKMARKS.WATCH_LATER) ?? [],
 };
 
 export const bookmarks = (state = initialState, action: BookmarkActions) => {
