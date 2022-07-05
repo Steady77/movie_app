@@ -6,14 +6,14 @@ import { Route, Routes } from 'react-router-dom';
 import MovieInfo from 'pages/movie-info/movie-info';
 import Search from 'pages/search/search';
 import Home from 'pages/home/home';
-import Layout from 'pages/layout';
+import Layout from 'pages/ayout';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setItems(moviesData));
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>
