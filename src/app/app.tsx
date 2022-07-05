@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setItems } from 'redux/movies/actions';
-import moviesData from 'data/moviesData';
 import { Route, Routes } from 'react-router-dom';
 import MovieInfo from 'pages/movie-info/movie-info';
 import Search from 'pages/search/search';
 import Home from 'pages/home/home';
 import Layout from 'pages/layout';
+
+import moviesData from 'data/moviesData';
 
 function App() {
   const dispatch = useDispatch();
