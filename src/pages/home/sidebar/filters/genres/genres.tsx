@@ -6,12 +6,15 @@ import { FormGroup } from '@mui/material';
 const Genres: FC = () => {
   return (
     <FormGroup>
-      {genresData.map((item) => (
-        <GenreCheckbox
-          key={item.id}
-          {...item}
-        />
-      ))}
+      <>
+        {genresData.map((item) => (
+          <GenreCheckbox
+            key={item.id}
+            id={item.id}
+            name={item.name}
+          />
+        ))}
+      </>
     </FormGroup>
   );
 };

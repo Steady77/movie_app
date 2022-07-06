@@ -11,7 +11,9 @@ const GenreCheckbox: FC<GenreCheckboxProps> = ({ id, name }) => {
   const genresIds = useTypedSelector(selectGenresIds);
   const dispatch = useDispatch();
 
-  const handleCheckbox = (id: number) => {
+  const isChecked = genresIds.includes(id);
+
+  const handleCheckbox = () => {
     dispatch(setGenresId(toggleIdInArray(genresIds, id)));
     dispatch(setCurrentPage(1));
   };
@@ -22,9 +24,9 @@ const GenreCheckbox: FC<GenreCheckboxProps> = ({ id, name }) => {
       sx={{ mb: '-12px' }}
       control={
         <Checkbox
-          onChange={() => handleCheckbox(id)}
+          onChange={handleCheckbox}
           size="small"
-          checked={genresIds.includes(id)}
+          checked={isChecked}
         />
       }
       label={name}
