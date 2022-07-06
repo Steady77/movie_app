@@ -21,7 +21,7 @@ export const setCurrentPage = (page: number) => ({
   payload: page,
 });
 
-export const setGenresId = (ids: number[]) => ({
+export const setGenresId = (ids: number) => ({
   type: MovieActionType.SET_GENRES_ID,
   payload: ids,
 });

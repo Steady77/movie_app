@@ -1,3 +1,4 @@
+import { toggleIdInArray } from './../../utils/helpers/array';
 import { DEFAULT_PAGE_LIMIT, DEFAULT_SORT_TYPE, DEFAULT_YEAR } from './../../utils/consts';
 import { MovieActionType, MoviesActions, MovieState } from './types';
 
@@ -35,7 +36,7 @@ export const movies = (state = initialState, action: MoviesActions) => {
     case MovieActionType.SET_GENRES_ID:
       return {
         ...state,
-        genresIds: action.payload,
+        genresIds: toggleIdInArray(state.genresIds, action.payload),
       };
     case MovieActionType.RESET_FILTERS:
       return {

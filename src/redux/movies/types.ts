@@ -40,7 +40,7 @@ interface SetCurrentPageAction {
 
 interface SetGenresIdAction {
   type: MovieActionType.SET_GENRES_ID;
-  payload: number[];
+  payload: number;
 }
 
 interface ResetFiltersAction {
