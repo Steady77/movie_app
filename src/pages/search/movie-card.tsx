@@ -24,7 +24,7 @@ const MovieCard: FC<MovieCardProps> = ({
   const imagePath = poster_path || backdrop_path;
 
   const onClickSuited = () => {
-    navigate(`${id}`);
+    navigate(`/movie/${id}`, { replace: true });
     dispatch(setPageNum(1));
   };
 

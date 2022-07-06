@@ -31,10 +31,6 @@ function App() {
           element={<Search />}
         />
         <Route
-          path="search/:id"
-          element={<MovieInfo />}
-        />
-        <Route
           path="movie/:id"
           element={<MovieInfo />}
         />
