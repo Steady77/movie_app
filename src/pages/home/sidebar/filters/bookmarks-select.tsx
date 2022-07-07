@@ -1,17 +1,16 @@
 import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
 import { selectAuth } from 'redux/auth/selectors';
-import { setCurrentBookmark } from 'redux/bookmarks/actions';
+import { setCurrentBookmark } from 'redux/bookmarks/bookmarksSlice';
 import { selectCurrentBookmark } from 'redux/bookmarks/selectors';
-import { setCurrentPage } from 'redux/movies/actions';
-import { useTypedSelector } from 'hooks/redux';
+import { setCurrentPage } from 'redux/movies/moviesSlice';
+import { useTypedDispatch, useTypedSelector } from 'hooks/redux';
 import { BOOKMARKS } from 'utils/consts';
 
 const BookmarksSelect: FC = () => {
   const currentBookmark = useTypedSelector(selectCurrentBookmark);
   const { isAuth } = useTypedSelector(selectAuth);
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   const handleChange = (e: SelectChangeEvent) => {
     dispatch(setCurrentBookmark(e.target.value));

@@ -1,4 +1,4 @@
-const moviesData = [
+export const moviesData = [
   {
     adult: false,
     backdrop_path: '/qjGrUmKW78MCFG8PTLDBp67S27p.jpg',
@@ -4063,5 +4063,3 @@ const moviesData = [
     vote_count: 885,
   },
 ];
-
-export default moviesData;

@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-
 import MoviesList from 'pages/home/movies-list/movies-list';
 import Sidebar from 'pages/home/sidebar/sidebar';
 

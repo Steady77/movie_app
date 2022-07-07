@@ -1,4 +1,4 @@
-import { MovieData } from './../../types';
+import { MovieData } from 'types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SearchState } from './types';
 

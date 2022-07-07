@@ -1,7 +1,7 @@
 import { FormControl, MenuItem, Box, Select, SelectChangeEvent, InputLabel } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setYear, setCurrentPage } from 'redux/movies/actions';
+import { setYear, setCurrentPage } from 'redux/movies/moviesSlice';
 import { selectYear } from 'redux/movies/selectors';
 import { useTypedSelector } from 'hooks/redux';
 

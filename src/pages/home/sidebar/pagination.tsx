@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCurrentPage } from 'redux/movies/actions';
+import { setCurrentPage } from 'redux/movies/moviesSlice';
 import { selectCurrentPage, selectSortedMovies } from 'redux/movies/selectors';
 import { useTypedSelector } from 'hooks/redux';
 import { getPageCount } from 'utils/helpers/math';

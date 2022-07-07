@@ -1,9 +1,8 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
 import { FC, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { toggleModal } from 'redux/modal/actions';
-import { setAuthData } from 'redux/auth/actions';
-import { useTypedSelector } from 'hooks/redux';
+import { toggleModal } from 'redux/modal/modalSlice';
+import { setAuthData } from 'redux/auth/authSlice';
+import { useTypedDispatch, useTypedSelector } from 'hooks/redux';
 import LoginForm from './login-form/login-form';
 import { getFromStorage, removeFromStorage } from 'utils/helpers/storage';
 import { selectAuth } from 'redux/auth/selectors';
@@ -22,20 +21,24 @@ const style = {
 };
 
 const LoginModal: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
   const { isAuth, login } = useTypedSelector(selectAuth);
   const isModalOpen = useTypedSelector(selectIsModalOpen);
 
   useEffect(() => {
     const data = getFromStorage('auth');
     if (data) {
-      dispatch(setAuthData(data.isAuth, data.login));
+      const obj = {
+        isAuth: data.isAuth,
+        login: data.login,
+      };
+      dispatch(setAuthData(obj));
     }
   }, [dispatch]);
 
   const onClickLogout = () => {
     removeFromStorage('auth');
-    dispatch(setAuthData(false, null));
+    dispatch(setAuthData({ isAuth: false, login: '' }));
   };
 
   const handleOpen = () => dispatch(toggleModal());

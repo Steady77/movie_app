@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setAuthData } from 'redux/auth/actions';
+import { setAuthData } from 'redux/auth/authSlice';
 import { LoginFormProps } from 'types';
 import { saveToStorage } from 'utils/helpers/storage';
 import LoginButton from './login-button';
@@ -16,7 +16,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleClose }) => {
     e.preventDefault();
     if (login === 'user' && password === '123') {
       saveToStorage('auth', { isAuth: true, login });
-      dispatch(setAuthData(true, login));
+      dispatch(setAuthData({ isAuth: true, login }));
       handleClose();
     } else {
       alert('Не верные логин или пароль!');

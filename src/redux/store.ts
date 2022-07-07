@@ -1,10 +1,9 @@
-import search from './search/searchSlice';
-
-import { bookmarks } from './bookmarks/reducer';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { movies } from './movies/reducer';
-import { auth } from './auth/reducer';
-import { modal } from './modal/reducer';
+import search from './search/searchSlice';
+import bookmarks from './bookmarks/bookmarksSlice';
+import movies from './movies/moviesSlice';
+import auth from './auth/authSlice';
+import modal from './modal/modalSlice';
 
 const rootReducer = combineReducers({
   movies,

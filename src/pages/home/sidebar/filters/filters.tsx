@@ -1,15 +1,15 @@
 import { Button, Typography } from '@mui/material';
+import { useTypedDispatch } from 'hooks/redux';
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCurrentBookmark } from 'redux/bookmarks/actions';
-import { resetFilters } from 'redux/movies/actions';
+import { setCurrentBookmark } from 'redux/bookmarks/bookmarksSlice';
+import { resetFilters } from 'redux/movies/moviesSlice';
 import BookmarksSelect from './bookmarks-select';
 import Genres from './genres/genres';
 import SortSelect from './sort-select';
 import YearSelect from './year-select';
 
 const Filters: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   const clearFilters = () => {
     dispatch(resetFilters());
