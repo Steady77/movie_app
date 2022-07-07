@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
 import { selectSearch } from 'redux/search/selectors';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { paginate } from 'utils/helpers/array';
 import MovieCard from './movie-card';
 import MovieNotFound from './movie-not-found';

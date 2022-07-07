@@ -1,5 +1,5 @@
-import { toggleIdInArray } from './../../utils/helpers/array';
-import { DEFAULT_PAGE_LIMIT, DEFAULT_SORT_TYPE, DEFAULT_YEAR } from './../../utils/consts';
+import { toggleIdInArray } from '../../utils/helpers/array';
+import { DEFAULT_PAGE_LIMIT, DEFAULT_SORT_TYPE, DEFAULT_YEAR } from '../../utils/consts';
 import { MovieActionType, MoviesActions, MovieState } from './types';
 
 const initialState: MovieState = {

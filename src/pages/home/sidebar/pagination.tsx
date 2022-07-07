@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from 'redux/movies/actions';
 import { selectCurrentPage, selectSortedMovies } from 'redux/movies/selectors';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { getPageCount } from 'utils/helpers/math';
 
 const Pagination: FC = () => {

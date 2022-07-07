@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import { FC } from 'react';
 import MovieItem from './movie-item/movie-item';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { MovieData } from 'types';
 import { selectCurrentPage, selectSortedMovies } from 'redux/movies/selectors';
 import { DEFAULT_PAGE_LIMIT } from 'utils/consts';

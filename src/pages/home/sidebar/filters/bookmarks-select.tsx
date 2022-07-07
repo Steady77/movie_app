@@ -5,7 +5,7 @@ import { selectAuth } from 'redux/auth/selectors';
 import { setCurrentBookmark } from 'redux/bookmarks/actions';
 import { selectCurrentBookmark } from 'redux/bookmarks/selectors';
 import { setCurrentPage } from 'redux/movies/actions';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { BOOKMARKS } from 'utils/consts';
 
 const BookmarksSelect: FC = () => {

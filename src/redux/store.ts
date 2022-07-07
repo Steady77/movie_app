@@ -1,12 +1,12 @@
-import { search } from './search/reducer';
+import search from './search/searchSlice';
+
 import { bookmarks } from './bookmarks/reducer';
-import { combineReducers, createStore } from '@reduxjs/toolkit';
-import { useSelector, TypedUseSelectorHook } from 'react-redux';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { movies } from './movies/reducer';
 import { auth } from './auth/reducer';
 import { modal } from './modal/reducer';
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
   movies,
   auth,
   modal,
@@ -14,11 +14,9 @@ const reducers = combineReducers({
   search,
 });
 
-export const store = createStore(
-  reducers,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
-);
+export const store = configureStore({
+  reducer: rootReducer,
+});
 
 export type RootState = ReturnType<typeof store.getState>;
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 export type AppDispatch = typeof store.dispatch;

@@ -2,7 +2,7 @@ import { Checkbox, FormControlLabel } from '@mui/material';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage, setGenresId } from 'redux/movies/actions';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { GenreCheckboxProps } from 'types';
 
 const GenreCheckbox: FC<GenreCheckboxProps> = ({ id, name }) => {

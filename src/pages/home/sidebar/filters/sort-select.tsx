@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage, setSortBy } from 'redux/movies/actions';
 import { selectSortType } from 'redux/movies/selectors';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { SORT_TYPE } from 'utils/consts';
 
 const SortSelect: FC = () => {

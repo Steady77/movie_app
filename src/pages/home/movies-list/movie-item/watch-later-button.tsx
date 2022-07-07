@@ -6,7 +6,7 @@ import { selectAuth } from 'redux/auth/selectors';
 import { setToWatchLater } from 'redux/bookmarks/actions';
 import { toggleModal } from 'redux/modal/actions';
 import { selectWatchLaterList } from 'redux/bookmarks/selectors';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { BookmarkButtonsProps } from 'types';
 import { BOOKMARKS } from 'utils/consts';
 import { toggleIdInArray } from 'utils/helpers/array';

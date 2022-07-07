@@ -1,13 +1,12 @@
 import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCurrentQuestion, setCompiledMovies } from 'redux/search/actions';
+import { setCurrentQuestion, setCompiledMovies } from 'redux/search/searchSlice';
 import { selectSearch } from 'redux/search/selectors';
-import { useTypedSelector } from 'redux/store';
+import { useTypedDispatch, useTypedSelector } from 'hooks/redux';
 
 const ChoosePopularity: FC = () => {
   const { currentQuestion, compiledMovies } = useTypedSelector(selectSearch);
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   const onClickPopular = () => {
     const filtred = compiledMovies.filter((item) => item.popularity > 100 && item.vote_count > 150);

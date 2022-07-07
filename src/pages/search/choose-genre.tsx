@@ -1,17 +1,16 @@
 import { Box, Button, Typography } from '@mui/material';
 import { FC } from 'react';
-import { useTypedSelector } from 'redux/store';
+import { useTypedDispatch, useTypedSelector } from 'hooks/redux';
 import { genresData } from 'data/genresData';
 import { filterByGenre } from 'utils/helpers/array';
-import { useDispatch } from 'react-redux';
-import { setCurrentQuestion, setCompiledMovies } from 'redux/search/actions';
+import { setCurrentQuestion, setCompiledMovies } from 'redux/search/searchSlice';
 import { selectMovieItems } from 'redux/movies/selectors';
 import { selectCurrentQuestion } from 'redux/search/selectors';
 
 const ChooseGenre: FC = () => {
   const items = useTypedSelector(selectMovieItems);
   const currentQuestion = useTypedSelector(selectCurrentQuestion);
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   const onClickButton = (id: number) => {
     dispatch(setCompiledMovies(filterByGenre(items, [id])));

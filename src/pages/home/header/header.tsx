@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { setCurrentQuestion, setPageNum } from 'redux/search/actions';
+import { setCurrentQuestion, setPageNum } from 'redux/search/searchSlice';
 import LoginModal from './login/login-modal';
 
 const Header: FC = () => {

@@ -1,12 +1,11 @@
 import { Button, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { genresData } from 'data/genresData';
 import { getGenresNameById } from 'utils/helpers/array';
-import { setPageNum } from 'redux/search/actions';
-import { useTypedSelector } from 'redux/store';
+import { setPageNum } from 'redux/search/searchSlice';
+import { useTypedDispatch, useTypedSelector } from 'hooks/redux';
 import { MovieCardProps } from 'types';
 import { selectPageNum } from 'redux/search/selectors';
 
@@ -19,7 +18,7 @@ const MovieCard: FC<MovieCardProps> = ({
   overview,
 }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
   const pageNum = useTypedSelector(selectPageNum);
   const imagePath = poster_path || backdrop_path;
 

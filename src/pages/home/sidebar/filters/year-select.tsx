@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { setYear, setCurrentPage } from 'redux/movies/actions';
 import { selectYear } from 'redux/movies/selectors';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 
 const YearSelect: FC = () => {
   const dispatch = useDispatch();

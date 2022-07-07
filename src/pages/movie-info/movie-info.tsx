@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { selectMovieItems } from 'redux/movies/selectors';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import { MovieData } from 'types';
 import InfoTable from './Info-table';
 

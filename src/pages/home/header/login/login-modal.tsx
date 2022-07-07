@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/actions';
 import { setAuthData } from 'redux/auth/actions';
-import { useTypedSelector } from 'redux/store';
+import { useTypedSelector } from 'hooks/redux';
 import LoginForm from './login-form/login-form';
 import { getFromStorage, removeFromStorage } from 'utils/helpers/storage';
 import { selectAuth } from 'redux/auth/selectors';
@@ -31,7 +31,7 @@ const LoginModal: FC = () => {
     if (data) {
       dispatch(setAuthData(data.isAuth, data.login));
     }
-  }, []);
+  }, [dispatch]);
 
   const onClickLogout = () => {
     removeFromStorage('auth');
