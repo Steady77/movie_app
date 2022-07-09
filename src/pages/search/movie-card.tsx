@@ -42,17 +42,17 @@ const MovieCard: FC<MovieCardProps> = ({
       >
         <Grid
           item
-          xs={5}
+          sm={5}
         >
           <img
-            width={300}
+            style={{ maxWidth: '100%' }}
             src={`https://image.tmdb.org/t/p/w500${imagePath}`}
             alt="poster"
           />
         </Grid>
         <Grid
           item
-          xs={7}
+          sm={7}
         >
           <Typography
             variant="h4"
@@ -76,7 +76,12 @@ const MovieCard: FC<MovieCardProps> = ({
         </Grid>
       </Grid>
       <Box
-        sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: '300px', m: '0 auto' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          maxWidth: '300px',
+          m: '0 auto 20px',
+        }}
       >
         <Button
           onClick={onClickSuited}

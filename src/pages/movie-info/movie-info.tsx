@@ -36,21 +36,22 @@ const MovieInfo = () => {
       >
         <Grid
           item
-          xs={5}
+          md
+          lg={5}
         >
           <img
-            width={370}
+            style={{ maxWidth: '100%' }}
             src={`https://image.tmdb.org/t/p/w500${imagePath}`}
             alt="poster"
           />
         </Grid>
         <Grid
           item
-          xs={7}
+          lg={7}
           sx={{ color: '#fff' }}
         >
           <Typography
-            variant="h3"
+            sx={{ typography: { lg: 'h3', sm: 'h6' } }}
             gutterBottom
           >
             {title}

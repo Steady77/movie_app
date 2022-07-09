@@ -19,24 +19,35 @@ const Header: FC = () => {
     <Box>
       <AppBar
         position="static"
-        sx={{ mb: '20px' }}
+        sx={{ mb: '20px', p: '5px 0' }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography
-            variant="h6"
-            component={Link}
-            to={'/'}
-            sx={{ textDecoration: 'none', color: '#fff' }}
-          >
-            Главная
-          </Typography>
-          <Typography
-            onClick={onClickSearch}
-            variant="h6"
-            sx={{ textDecoration: 'none', color: '#fff', cursor: 'pointer' }}
-          >
-            Подобрать фильм
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography
+              component={Link}
+              to={'/'}
+              sx={{
+                textDecoration: 'none',
+                color: '#fff',
+                pr: '10px',
+                typography: { md: 'h6', sm: 'body1' },
+              }}
+            >
+              Главная
+            </Typography>
+            <Typography
+              onClick={onClickSearch}
+              sx={{
+                textDecoration: 'none',
+                color: '#fff',
+                cursor: 'pointer',
+                p: '0 10px',
+                typography: { md: 'h6', sm: 'body1' },
+              }}
+            >
+              Подобрать фильм
+            </Typography>
+          </Box>
           <LoginModal />
         </Toolbar>
       </AppBar>

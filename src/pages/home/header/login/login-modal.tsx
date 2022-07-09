@@ -47,11 +47,17 @@ const LoginModal: FC = () => {
   return (
     <>
       {isAuth ? (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            flexWrap: 'wrap',
+          }}
+        >
           <Typography
-            variant="h6"
             component="span"
-            sx={{ mr: '15px', lineHeight: 2.6 }}
+            sx={{ mr: '15px', lineHeight: 2.6, typography: { md: 'h6', sm: 'body1' } }}
           >
             {login}
           </Typography>
@@ -65,7 +71,7 @@ const LoginModal: FC = () => {
             variant="contained"
             onClick={onClickLogout}
           >
-            Выйти
+            <Typography sx={{ typography: { md: 'h6', sm: 'body1' } }}>Выйти</Typography>
           </Button>
         </Box>
       ) : (
@@ -79,7 +85,7 @@ const LoginModal: FC = () => {
           variant="contained"
           onClick={handleOpen}
         >
-          Войти
+          <Typography sx={{ typography: { md: 'h6', sm: 'body1' } }}>Войти</Typography>
         </Button>
       )}
       <Modal

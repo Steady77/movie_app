@@ -7,6 +7,7 @@ import {
   Divider,
   Grid,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC, memo } from 'react';
@@ -18,6 +19,7 @@ import WatchLaterButton from './watch-later-button';
 const MovieItem: FC<MoviItemProps> = ({ poster_path, backdrop_path, vote_average, title, id }) => {
   const navigate = useNavigate();
   const imagePath = poster_path || backdrop_path;
+  const matches = useMediaQuery('(max-width:600px)');
 
   const onClickButton = () => {
     navigate(`movie/${id}`);
@@ -26,8 +28,9 @@ const MovieItem: FC<MoviItemProps> = ({ poster_path, backdrop_path, vote_average
   return (
     <Grid
       item
-      md={7.8}
-      xs={16}
+      lg={7.8}
+      sm={16}
+      sx={{ flexBasis: '100%' }}
     >
       <Card
         sx={{
@@ -35,14 +38,15 @@ const MovieItem: FC<MoviItemProps> = ({ poster_path, backdrop_path, vote_average
           height: '100%',
           border: '1px solid #d9d9d9',
           display: 'flex',
+          m: '0 auto',
+          flexDirection: matches ? 'column' : 'row',
         }}
       >
         <CardMedia
           component="img"
           sx={{
-            width: 190,
+            maxWidth: 190,
           }}
-          height="100%"
           image={`https://image.tmdb.org/t/p/w500/${imagePath}`}
         />
         <Box

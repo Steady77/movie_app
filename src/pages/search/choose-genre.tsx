@@ -18,7 +18,7 @@ const ChooseGenre: FC = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: '800px', m: '0 auto' }}>
+    <Box sx={{ maxWidth: '900px', m: '0 auto' }}>
       <Typography
         sx={{ mb: '30px', fontWeight: 500 }}
         variant="h4"
@@ -26,12 +26,12 @@ const ChooseGenre: FC = () => {
       >
         Выберите жанр
       </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
         {genresData.map((item) => (
           <Button
             key={item.id}
             onClick={() => onClickButton(item.id)}
-            sx={{ flex: '0 32%', mb: '20px' }}
+            sx={{ flex: '0 200px', mb: '20px', mr: '5px' }}
             variant="outlined"
           >
             {item.name}
