@@ -11,6 +11,7 @@ const initialState: MovieState = {
   pageLimit: DEFAULT_PAGE_LIMIT,
   sortType: DEFAULT_SORT_TYPE,
   genresIds: [],
+  findValue: '',
 };
 
 export const moviesSlice = createSlice({
@@ -19,6 +20,9 @@ export const moviesSlice = createSlice({
   reducers: {
     setItems(state, action: PayloadAction<MovieData[]>) {
       state.items = action.payload;
+    },
+    setFindValue(state, action) {
+      state.findValue = action.payload;
     },
     setYear(state, action: PayloadAction<number>) {
       state.year = action.payload;
@@ -41,7 +45,14 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const { setItems, setYear, setSortBy, setCurrentPage, setGenresId, resetFilters } =
-  moviesSlice.actions;
+export const {
+  setItems,
+  setYear,
+  setSortBy,
+  setCurrentPage,
+  setGenresId,
+  resetFilters,
+  setFindValue,
+} = moviesSlice.actions;
 
 export default moviesSlice.reducer;

@@ -7,4 +7,5 @@ export interface MovieState {
   pageLimit: number;
   sortType: string;
   genresIds: number[];
+  findValue: string;
 }

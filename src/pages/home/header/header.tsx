@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { setCurrentQuestion, setPageNum } from 'redux/search/searchSlice';
 import LoginModal from './login/login-modal';
+import FindMovie from './find-movie';
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Header: FC = () => {
         position="static"
         sx={{ mb: '20px', p: '5px 0' }}
       >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Typography
               component={Link}
@@ -48,6 +49,7 @@ const Header: FC = () => {
               Подобрать фильм
             </Typography>
           </Box>
+          <FindMovie />
           <LoginModal />
         </Toolbar>
       </AppBar>
