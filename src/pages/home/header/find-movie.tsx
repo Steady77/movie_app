@@ -1,4 +1,5 @@
-import { Box, TextField } from '@mui/material';
+import { CloseRounded } from '@mui/icons-material';
+import { Box, InputAdornment, TextField } from '@mui/material';
 import { useTypedDispatch } from 'hooks/redux';
 import { ChangeEvent, FC, useState } from 'react';
 import { setFindValue } from 'redux/movies/moviesSlice';
@@ -12,6 +13,11 @@ const FindMovie: FC = () => {
     dispatch(setFindValue(e.target.value));
   };
 
+  const onClickClear = () => {
+    setValue('');
+    dispatch(setFindValue(''));
+  };
+
   return (
     <Box sx={{ p: '0 5px' }}>
       <TextField
@@ -22,6 +28,16 @@ const FindMovie: FC = () => {
         placeholder="Поиск"
         size="small"
         margin="dense"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment
+              position="end"
+              sx={{ cursor: 'pointer' }}
+            >
+              {value && <CloseRounded onClick={onClickClear} />}
+            </InputAdornment>
+          ),
+        }}
       />
     </Box>
   );

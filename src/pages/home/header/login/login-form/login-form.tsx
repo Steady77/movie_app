@@ -25,6 +25,7 @@ const LoginForm: FC<LoginFormProps> = ({ handleClose }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <span>Login: user</span> <span>Pass: 123</span>
       <LoginInput
         setLogin={setLogin}
         login={login}

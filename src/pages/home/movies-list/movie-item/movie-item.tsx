@@ -46,6 +46,7 @@ const MovieItem: FC<MoviItemProps> = ({ poster_path, backdrop_path, vote_average
           component="img"
           sx={{
             maxWidth: 190,
+            m: '0 auto',
           }}
           image={`https://image.tmdb.org/t/p/w500/${imagePath}`}
         />
