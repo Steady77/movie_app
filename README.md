@@ -10,3 +10,4 @@
 - Redux Toolkit
 - TypeScript
 - Material UI
+- Firebase Auth
