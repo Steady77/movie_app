@@ -2,8 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthState } from './types';
 
 const initialState: AuthState = {
-  isAuth: false,
-  login: '',
+  email: null,
+  token: null,
+  name: '',
 };
 
 export const authSlice = createSlice({
@@ -11,12 +12,18 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthData(state, action: PayloadAction<AuthState>) {
-      state.isAuth = action.payload.isAuth;
-      state.login = action.payload.login;
+      state.email = action.payload.email;
+      state.token = action.payload.token;
+      state.name = action.payload.name;
+    },
+    removeAuthData(state) {
+      state.email = null;
+      state.token = null;
+      state.name = '';
     },
   },
 });
 
-export const { setAuthData } = authSlice.actions;
+export const { setAuthData, removeAuthData } = authSlice.actions;
 
 export default authSlice.reducer;

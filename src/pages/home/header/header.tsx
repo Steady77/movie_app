@@ -3,7 +3,7 @@ import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { setCurrentQuestion, setPageNum } from 'redux/search/searchSlice';
-import LoginModal from './login/login-modal';
+import AuthModal from './auth/auth-modal';
 import FindMovie from './find-movie';
 
 const Header: FC = () => {
@@ -50,7 +50,7 @@ const Header: FC = () => {
             </Typography>
           </Box>
           <FindMovie />
-          <LoginModal />
+          <AuthModal />
         </Toolbar>
       </AppBar>
     </Box>

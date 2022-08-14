@@ -1,7 +1,6 @@
 import { StarOutline, StarOutlined } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { FC } from 'react';
-import { selectAuth } from 'redux/auth/selectors';
 import { setToFavorite } from 'redux/bookmarks/bookmarksSlice';
 import { toggleModal } from 'redux/modal/modalSlice';
 import { selectFavoriteList } from 'redux/bookmarks/selectors';
@@ -10,10 +9,11 @@ import { BookmarkButtonsProps } from 'types';
 import { BOOKMARKS } from 'utils/consts';
 import { toggleIdInArray } from 'utils/helpers/array';
 import { saveToStorage } from 'utils/helpers/storage';
+import { useAuth } from 'hooks/use-auth';
 
 const FavoriteButton: FC<BookmarkButtonsProps> = ({ id }) => {
   const dispatch = useTypedDispatch();
-  const { isAuth } = useTypedSelector(selectAuth);
+  const { isAuth } = useAuth();
   const favoriteList = useTypedSelector(selectFavoriteList);
 
   const onClickFavorite = () => {

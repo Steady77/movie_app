@@ -1,5 +1,3 @@
-import { Dispatch } from 'react';
-
 export interface MovieData {
   adult: boolean;
   backdrop_path: string;
@@ -20,10 +18,6 @@ export interface MovieData {
 export interface GenresData {
   id: number;
   name: string;
-}
-
-export interface LoginFormProps {
-  handleClose: () => void;
 }
 
 export interface MovieCardProps {
@@ -54,14 +48,4 @@ export interface BookmarkButtonsProps {
 
 export interface InfoTableProps {
   movieData: MovieData[];
-}
-
-export interface PassInputProps {
-  password: string;
-  setPassword: Dispatch<React.SetStateAction<string>>;
-}
-
-export interface LoginInputProps {
-  login: string;
-  setLogin: Dispatch<React.SetStateAction<string>>;
 }

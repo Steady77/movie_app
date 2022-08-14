@@ -16,7 +16,3 @@ export const getFromStorage = (key: string) => {
     console.log(error);
   }
 };
-
-export const removeFromStorage = (key: string) => {
-  localStorage.removeItem(key);
-};

@@ -1,4 +1,5 @@
 export interface AuthState {
-  isAuth: boolean;
-  login: string;
+  email: string | null;
+  token: string | null;
+  name: string | null;
 }

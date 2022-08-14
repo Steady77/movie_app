@@ -29,7 +29,7 @@ const Pagination: FC = () => {
     <>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '20px' }}>
         <Button
-          disabled={currentPage === 1 ? true : false}
+          disabled={currentPage === 1}
           onClick={prevPage}
           variant="contained"
           color="primary"
@@ -43,7 +43,7 @@ const Pagination: FC = () => {
           Назад
         </Button>
         <Button
-          disabled={currentPage === totalPages ? true : false}
+          disabled={currentPage === totalPages}
           onClick={nextPage}
           variant="contained"
           color="primary"
